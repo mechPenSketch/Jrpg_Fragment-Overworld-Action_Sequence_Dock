@@ -1,4 +1,5 @@
-extends Area2D
+tool
+extends PlayingPiece
 
 var direction = Vector2()
 const DEG_UP = 0
@@ -13,32 +14,29 @@ var tween
 var target_pos = Vector2()
 var blocks = []
 var is_blocked:bool = false
-export (NodePath) var rayU
-export (NodePath) var rayD
-export (NodePath) var rayL
-export (NodePath) var rayR
+export (Dictionary) var raycast_directions
 var raycast
 export (Resource) var incoming
 signal incoming_gone
 
 func _ready():
-	grid = get_parent()
+	if !Engine.editor_hint:
+		grid = get_parent()
 	
-	tween = $Tween
-	tween.connect_into(self)
-	turn(Vector2(0,1))
-	pass
+		tween = $Tween
+		tween.connect_into(self)
+		turn(Vector2(0,1))
 
-func _physics_process(delta):
+func _input(event):
 	direction = Vector2()
 		
-	if Input.is_action_pressed("ui_up"):
+	if event.is_action_pressed("ui_up", true):
 		direction.y -= 1
-	elif Input.is_action_pressed("ui_down"):
+	elif event.is_action_pressed("ui_down", true):
 		direction.y += 1
-	elif Input.is_action_pressed("ui_left"):
+	elif event.is_action_pressed("ui_left", true):
 		direction.x -= 1
-	elif Input.is_action_pressed("ui_right"):
+	elif event.is_action_pressed("ui_right", true):
 		direction.x += 1
 	
 	if !is_moving and direction != Vector2():
@@ -56,16 +54,14 @@ func _physics_process(delta):
 			
 			tween.move_char(self, target_pos)
 			is_moving = true
-	pass
-	
-func _on_tween_completed(o, k):
+
+func _on_tween_completed(_o, _k):
 	is_moving = false
 	emit_signal("incoming_gone")
 	pass
 
 func _on_area_entered(a):
 	if a.get_parent() != $Position2D:
-		print(a)
 		blocks.append(a)
 		is_blocked = true
 	pass
@@ -74,14 +70,6 @@ func _on_area_exited(a):
 	blocks.erase(a)
 	is_blocked = blocks.size()
 	pass
-	
+
 func turn(dir:Vector2):
-	if dir.y < 0:
-		raycast=get_node(rayU)
-	elif dir.x < 0:
-		raycast=get_node(rayL)
-	elif dir.x > 0:
-		raycast=get_node(rayR)
-	else:
-		raycast=get_node(rayD)
-	pass
+	raycast = get_node(raycast_directions[dir])

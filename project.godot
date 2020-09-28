@@ -8,9 +8,38 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "CollisionShape2D",
+"class": "ColShapePiece",
+"language": "GDScript",
+"path": "res://addons/snap_map/nodes/colshape_piece.gd"
+}, {
+"base": "ColShapePiece",
+"class": "ColShapePieceEx",
+"language": "GDScript",
+"path": "res://addons/snap_map/nodes/colshape_expiece.gd"
+}, {
+"base": "Area2D",
+"class": "PlayingPiece",
+"language": "GDScript",
+"path": "res://addons/snap_map/nodes/playing_piece.gd"
+}, {
+"base": "RayCast2D",
+"class": "RayCastPiece",
+"language": "GDScript",
+"path": "res://addons/snap_map/nodes/raycast_piece.gd"
+}, {
+"base": "TileMap",
+"class": "SnapboundTiles",
+"language": "GDScript",
+"path": "res://addons/snap_map/nodes/snapbound_tiles.gd"
+} ]
 _global_script_class_icons={
-
+"ColShapePiece": "res://addons/snap_map/nodes/colshape_piece.svg",
+"ColShapePieceEx": "res://addons/snap_map/nodes/colshape_expiece.svg",
+"PlayingPiece": "res://addons/snap_map/nodes/playing_piece.svg",
+"RayCastPiece": "res://addons/snap_map/nodes/raycast_piece.svg",
+"SnapboundTiles": "res://addons/snap_map/nodes/snapbound_tiles.svg"
 }
 
 [application]
@@ -24,6 +53,10 @@ config/icon="res://icon.png"
 window/size/height=576
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "snap_map" )
 
 [rendering]
 
