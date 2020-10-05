@@ -21,8 +21,11 @@ func _notification(what):
 			if !input_event.is_pressed():
 				# SET GRID POSITION
 				grid_x = int(position.x) / cell_width
-				grid_y = int(position.y) / cell_width
+				grid_y = int(position.y) / cell_height
 				property_list_changed_notify()
+				print(cell_width)
+				print(grid_x)
+				print(position)
 
 func _plugin_input(e):
 	input_event = e
@@ -51,13 +54,22 @@ func plugset_cell_height(h):
 # SETTING PROPERTIES THROUGH INSPECTOR
 
 func set_cell_width(w):
-	emit_signal("param_changed", "cell_width", w, self)
+	if Engine.editor_hint:
+		emit_signal("param_changed", "cell_width", w, self)
+	else:
+		cell_width = w
 
 func set_aspect_ratio(e):
-	emit_signal("param_changed", "aspect_ratio", e)
+	if Engine.editor_hint:
+		emit_signal("param_changed", "aspect_ratio", e)
+	else:
+		aspect_ratio = e
 
 func set_cell_height(h):
-	emit_signal("param_changed", "cell_height", h, self)
+	if Engine.editor_hint:
+		emit_signal("param_changed", "cell_height", h, self)
+	else:
+		cell_height = h
 
 func set_grid_x(gx):
 	grid_x = gx

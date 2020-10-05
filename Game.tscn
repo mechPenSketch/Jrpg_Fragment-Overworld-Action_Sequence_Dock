@@ -223,7 +223,7 @@ states/Up/position = Vector2( 682, 35 )
 transitions = [ "Up", "Left", SubResource( 15 ), "Left", "Up", SubResource( 16 ), "Up", "Right", SubResource( 17 ), "Right", "Up", SubResource( 18 ), "Up", "Down", SubResource( 19 ), "Down", "Up", SubResource( 20 ), "Left", "Down", SubResource( 21 ), "Down", "Left", SubResource( 22 ), "Down", "Right", SubResource( 23 ), "Right", "Down", SubResource( 24 ), "Left", "Right", SubResource( 25 ), "Right", "Left", SubResource( 26 ) ]
 
 [sub_resource type="AnimationNodeBlendTree" id=28]
-graph_offset = Vector2( -726, 57.75 )
+graph_offset = Vector2( -863.535, 101.25 )
 nodes/AddAction/node = SubResource( 9 )
 nodes/AddAction/position = Vector2( -20, 120 )
 nodes/StateAction/node = SubResource( 10 )
@@ -247,10 +247,12 @@ cell_width = 32
 cell_height = 32
 
 [node name="Player" type="Area2D" parent="Grid"]
-position = Vector2( 96, 96 )
+position = Vector2( 176, 112 )
 script = ExtResource( 2 )
-grid_x = 1
-grid_y = 1
+cell_width = 32
+cell_height = 32
+grid_x = 5
+grid_y = 3
 raycast_directions = {
 Vector2( -1, 0 ): NodePath("RayLeft"),
 Vector2( 0, -1 ): NodePath("RayUp"),
@@ -281,6 +283,7 @@ anims/Up = SubResource( 8 )
 [node name="AnimationTree" type="AnimationTree" parent="Grid/Player/Sprite"]
 tree_root = SubResource( 28 )
 anim_player = NodePath("../AnimationPlayer")
+active = true
 parameters/AddAction/add_amount = 1.0
 parameters/StateAction/playback = SubResource( 29 )
 parameters/StateSide/playback = SubResource( 29 )
@@ -295,7 +298,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 cell_width = 32
-aspect_ratio = 1
 cell_height = 32
 
 [node name="RayUp" type="RayCast2D" parent="Grid/Player"]

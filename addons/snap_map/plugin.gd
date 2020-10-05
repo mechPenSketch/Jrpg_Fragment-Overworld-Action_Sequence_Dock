@@ -20,7 +20,6 @@ var snap_ratio
 signal input_event
 
 func _enter_tree():
-	
 	# LOAD SNAP SETTING(S)
 	config = ConfigFile.new()
 	var err = config.load(CONFIG_FILEPATH)
@@ -192,7 +191,6 @@ func set_node_params(node, param, val):
 					node.plugset_cell_width(val)
 				"cell_height":
 					node.plugset_cell_height(val)
-			break
 
 func set_node_params_then_children(node, param, val):
 	set_node_params(node, param, val)
