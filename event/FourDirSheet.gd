@@ -1,6 +1,5 @@
-extends Sprite
-
 tool
+extends Sprite
 
 enum SIDES{
 	DOWN,
@@ -15,6 +14,17 @@ export(int) var action_frame setget set_action_frame
 export(Vector2) var action_frame_coord setget set_action_frame_coord
 export(bool) var is_symmetrical = false
 
+func _on_turning(v):
+	match v:
+		Vector2(1, 0):
+			set_side(SIDES.RIGHT)
+		Vector2(-1, 0):
+			set_side(SIDES.LEFT)
+		Vector2(0, -1):
+			set_side(SIDES.UP)
+		_:
+			set_side(SIDES.DOWN)
+	
 func set_side(i):
 	side = i
 	
@@ -28,14 +38,12 @@ func set_side(i):
 			set_flip_h(false)
 	
 	calc_frame()
-	pass
 
 func set_action_frame(i):
 	var base = i
 	base = clamp_frame(base, vframes_per_side * hframes)
 	action_frame = base
 	calc_frame()
-	pass
 
 func set_action_frame_coord(v2):
 	var base = v2
@@ -43,11 +51,9 @@ func set_action_frame_coord(v2):
 	base.y = clamp_frame(base.y, vframes_per_side)
 	action_frame_coord = base
 	set_action_frame(base.y * get_hframes() + base.x)
-	pass
 
 func calc_frame():
 	frame = hframes * vframes_per_side * side + action_frame
-	pass
 
 func clamp_frame(frm:int, fexd:int)->int:
 	if frm < 0:
@@ -55,4 +61,3 @@ func clamp_frame(frm:int, fexd:int)->int:
 	elif frm >= fexd:
 		return fexd - 1
 	return frm
-	pass

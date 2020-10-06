@@ -9,6 +9,7 @@ const DEG_LEFT = 270
 
 var grid
 
+signal turning
 var is_moving = false
 var tween
 var target_pos = Vector2()
@@ -72,3 +73,4 @@ func _on_area_exited(a):
 
 func turn(dir:Vector2):
 	raycast = get_node(raycast_directions[dir])
+	emit_signal("turning", dir)

@@ -1,14 +1,17 @@
 extends Tween
 
-# Called when the node enters the scene tree for the first time.
+export(NodePath) var np_anim_player
+var anim_player
+export(bool) var step_is_right = true
+
 func _ready():
-	pass # Replace with function body.
+	anim_player = get_node(np_anim_player)
 
 func connect_into(o):
 	connect("tween_completed", o, "_on_tween_completed")
-	pass
 
 func move_char(c, t_pos):
 	interpolate_property(c, "position", c.get_position(), t_pos, 0.75, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	start()
-	pass
+	anim_player.play("Right Step" if step_is_right else "Left Step")
+	step_is_right = !step_is_right
