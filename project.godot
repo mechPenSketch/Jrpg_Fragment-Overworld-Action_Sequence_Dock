@@ -58,6 +58,10 @@ window/stretch/aspect="keep"
 
 enabled=PoolStringArray( "snap_map" )
 
+[layer_names]
+
+2d_physics/layer_1="Wall"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
