@@ -1,12 +1,6 @@
 tool
 extends PlayingPiece
 
-var direction = Vector2()
-const DEG_UP = 0
-const DEG_RIGHT = 90
-const DEG_DOWN = 180
-const DEG_LEFT = 270
-
 var grid
 
 signal turning
@@ -25,29 +19,17 @@ func _ready():
 		grid = get_parent()
 	
 		tween = $Tween
-		tween.connect_into(self)
+		
 		turn(Vector2(0,1))
 
-func _input(event):
-	direction = Vector2()
+func _direction(dir:Vector2):
+	if !is_moving:
 		
-	if event.is_action_pressed("ui_up", true):
-		direction.y -= 1
-	elif event.is_action_pressed("ui_down", true):
-		direction.y += 1
-	elif event.is_action_pressed("ui_left", true):
-		direction.x -= 1
-	elif event.is_action_pressed("ui_right", true):
-		direction.x += 1
-	
-	if !is_moving and direction != Vector2():
-		
-		turn(direction)
-		
+		turn(dir)
 		if !raycast.is_colliding():
-			grid_x += direction.x
-			grid_y += direction.y
-			target_pos = get_position() + direction * Vector2(cell_width, cell_height)
+			grid_x += dir.x
+			grid_y += dir.y
+			target_pos = get_position() + dir * Vector2(cell_width, cell_height)
 			
 			# ADD INCOMING BLOCK
 			var new_incoming = incoming.instance()
