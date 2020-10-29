@@ -124,6 +124,10 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_lock_": true
 }
+vframes_per_side = 1
+side = 0
+action_frame = 0
+action_frame_coord = Vector2( 0, 0 )
 is_symmetrical = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
@@ -137,7 +141,7 @@ anims/Up = SubResource( 7 )
 
 [node name="Tween" type="Tween" parent="." index="2"]
 script = ExtResource( 2 )
-np_anim_player = NodePath("../../Actor/Sprite/AnimationPlayer")
+np_anim_player = NodePath("../Sprite/AnimationPlayer")
 
 [node name="RayUp" type="RayCast2D" parent="." index="3"]
 position = Vector2( 0, -16 )
