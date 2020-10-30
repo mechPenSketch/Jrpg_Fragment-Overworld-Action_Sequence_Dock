@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=2]
 
-[ext_resource path="res://event/Prop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://event/PropExp.tscn" type="PackedScene" id=1]
 [ext_resource path="res://event/CharTween.gd" type="Script" id=2]
 [ext_resource path="res://event/FourDirSheet.gd" type="Script" id=3]
 [ext_resource path="res://event/alice.png" type="Texture" id=4]
