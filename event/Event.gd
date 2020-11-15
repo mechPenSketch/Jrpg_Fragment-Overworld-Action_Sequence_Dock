@@ -121,6 +121,14 @@ func is_drawable_sprite_then_children(node):
 				return true
 	return false
 
+func plugset_cell_width(w):
+	.plugset_cell_width(w)
+	update()
+	
+func plugset_cell_height(h):
+	.plugset_cell_height(h)
+	update()
+	
 func turn(dir:Vector2):
 	raycast = get_node(raycast_directions[dir])
 	emit_signal("turning", dir)
