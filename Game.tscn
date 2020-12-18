@@ -110,12 +110,6 @@ Vector2( 0, -1 ): NodePath("RayUp"),
 Vector2( 0, 1 ): NodePath("RayDown"),
 Vector2( 1, 0 ): NodePath("RayRight")
 }
-
-[node name="Sprite" parent="Grid/Player" index="1"]
-vframes_per_side = 1
-side = 0
-action_frame = 0
-action_frame_coord = Vector2( 0, 0 )
 [connection signal="sig_dir" from="Controller" to="Grid/Player" method="_direction"]
 
 [editable path="Grid/Player"]

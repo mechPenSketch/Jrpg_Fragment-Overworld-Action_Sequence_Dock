@@ -16,6 +16,7 @@ export (Dictionary) var raycast_directions
 var raycast
 export (Resource) var incoming
 signal incoming_gone
+export (Array, Dictionary) var action_sequences
 
 func _notification(what):
 	match what:
