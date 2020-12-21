@@ -1,23 +1,26 @@
 tool
 extends EditorPlugin
 
+var additional_mains
 
 func _enter_tree():
 	connect("scene_changed", self, "_on_scene_changed")
 	
-	# ADD TOOLBARS
-	#add_control_to_container(CONTAINER_CANVAS_EDITOR_MENU, control)
+	# ADD TO MAIN TOOLBAR
+	var scn_at = load("AdditionalToolbar.tscn")
+	additional_mains = scn_at.get_children()
+	for c in additional_mains:
+		add_control_to_container(CONTAINER_CANVAS_EDITOR_MENU, c)
 
 func _exit_tree():
-	hide_plugin_toolbars()
+	for c in additional_mains:
+		remove_control_from_container(CONTAINER_CANVAS_EDITOR_MENU, c)
+		c.queue_free()
 	
 	disconnect("scene_changed", self, "_on_scene_changed")
 
 func _on_scene_changed(new_root):
-	hide_plugin_toolbars()
+	var root_is_Overworld = new_root is Overworld
 	
-	if new_root is Overworld:
-		print("Add toolbar")
-
-func hide_plugin_toolbars():
-	pass
+	for c in additional_mains:
+		c.set_visible(root_is_Overworld)
