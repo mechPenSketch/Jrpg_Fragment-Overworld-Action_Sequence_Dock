@@ -2,9 +2,12 @@ tool
 extends EditorPlugin
 
 var additional_mains = []
+var editor_selection
 
 func _enter_tree():
 	connect("scene_changed", self, "_on_scene_changed")
+	editor_selection = get_editor_interface().get_selection()
+	editor_selection.connect("selection_changed", self, "_on_selection_changed")
 	
 	# ADD TO MAIN TOOLBAR
 	#	ADD EVENT
@@ -15,6 +18,7 @@ func _enter_tree():
 	#	ACION SEQUENCE
 	var action_sequence = ToolButton.new()
 	action_sequence.set_button_icon(load("res://addons/action_sequence_dialog/additional_toolbar/action_squence.svg"))
+	action_sequence.set_disabled(true)
 	action_sequence.connect("pressed", self, "_on_action_sequence_pressed")
 	
 	additional_mains += [VSeparator.new(), add_event, action_sequence]
@@ -27,12 +31,16 @@ func _exit_tree():
 		c.queue_free()
 	
 	disconnect("scene_changed", self, "_on_scene_changed")
+	editor_selection.disconnect("selection_changed", self, "_on_selection_changed")
 
 func _on_scene_changed(new_root):
 	var root_is_Overworld = new_root is Overworld
 	
 	for c in additional_mains:
 		c.set_visible(root_is_Overworld)
+
+func _on_selection_changed():
+	pass
 
 func _on_add_event_pressed():
 	pass
