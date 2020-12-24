@@ -1,11 +1,13 @@
 [gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://event/PropExp.tscn" type="PackedScene" id=1]
-[ext_resource path="res://event/CharTween.gd" type="Script" id=2]
-[ext_resource path="res://event/FourDirSheet.gd" type="Script" id=3]
+[ext_resource path="res://event/char_tween.gd" type="Script" id=2]
+[ext_resource path="res://event/four_dir_sheet.gd" type="Script" id=3]
 [ext_resource path="res://event/alice.png" type="Texture" id=4]
 [ext_resource path="res://addons/snap_map/nodes/raycast_piece.gd" type="Script" id=5]
 [ext_resource path="res://event/Incoming.tscn" type="PackedScene" id=6]
+
+
 
 [sub_resource type="Animation" id=1]
 tracks/0/type = "value"

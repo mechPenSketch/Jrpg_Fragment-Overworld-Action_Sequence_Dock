@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="ConfirmationDialog" type="ConfirmationDialog"]
+margin_right = 200.0
+margin_bottom = 70.0
+window_title = "New Event"

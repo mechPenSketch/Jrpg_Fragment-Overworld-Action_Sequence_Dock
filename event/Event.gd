@@ -1,6 +1,8 @@
 tool
 extends PlayingPiece
 
+class_name Event
+
 var default_texture
 var children_sprites
 
