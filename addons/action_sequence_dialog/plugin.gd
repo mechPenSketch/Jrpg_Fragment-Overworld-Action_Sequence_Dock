@@ -35,6 +35,7 @@ func _enter_tree():
 	pop_add = load("res://addons/action_sequence_dialog/popup/AddEvent.tscn").instance()
 	pop_add.set_as_minsize()
 	behind_popups.add_child(pop_add)
+	pop_add.connect("confirmed", self, "_on_add_event_dialog_confirmed")
 	
 	pop_sequence = load("res://addons/action_sequence_dialog/popup/ActionSequence.tscn").instance()
 	pop_sequence.set_as_minsize()
@@ -64,5 +65,33 @@ func _on_selection_changed():
 func _on_add_event_pressed():
 	pop_add.popup_centered()
 
+func _on_add_event_dialog_confirmed():
+	
+	# GET TARGET NODE TO ADD NEW EVENT TO
+	var root = get_tree().get_edited_scene_root()
+	var target_parent = root
+	for n in editor_selection.get_selected_nodes():
+		if target_parent.is_a_parent_of(n):
+			target_parent = n
+			break
+	
+	# GET FILEPATH
+	var nd_class = pop_add.find_node("OptionClass")
+	var int_class = nd_class.get_selected()
+	var txt_class = nd_class.get_item_text(int_class)
+	var txt_exp = "Exp" if pop_add.find_node("CheckExp").is_pressed() else ""
+	var final_filepath = pop_add.dir + "/" + txt_class + txt_exp + ".tscn"
+	
+	# GENERATE NEW EVENT
+	var inst_event = load(final_filepath).instance()
+	#	NAME OF NEW EVENT
+	var new_name = pop_add.find_node("EditName").get_text()
+	if new_name:
+		inst_event.set_name(new_name)
+		# CLEAR INPUT
+		pop_add.find_node("EditName").clear()
+	target_parent.add_child(inst_event)
+	inst_event.set_owner(root)
+	
 func _on_action_sequence_pressed():
 	pop_sequence.popup_centered()
