@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://addons/action_sequence_dialog/popup/add_event.gd" type="Script" id=1]
+[ext_resource path="res://addons/jrpg_overwolrd/dialog.gd" type="Script" id=1]
 
 [node name="ConfirmationDialog" type="ConfirmationDialog"]
 margin_right = 200.0
