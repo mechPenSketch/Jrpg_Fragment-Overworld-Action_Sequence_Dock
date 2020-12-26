@@ -2,6 +2,7 @@ tool
 extends EditorPlugin
 
 var additional_mains = []
+var behind_popups
 var pop_add
 
 func _enter_tree():
@@ -19,7 +20,8 @@ func _enter_tree():
 		add_control_to_container(CONTAINER_CANVAS_EDITOR_MENU, c)
 		
 	# POPUPS
-	var behind_popups = get_script_create_dialog().get_parent()
+	#	DEFINE PLACEMENT TO PUT POPUP IN
+	behind_popups = get_script_create_dialog().get_parent()
 	
 	pop_add = load("res://addons/jrpg_overwolrd/Dialog.tscn").instance()
 	pop_add.set_as_minsize()
@@ -27,10 +29,16 @@ func _enter_tree():
 	pop_add.connect("confirmed", self, "_on_dialog_confirmed")
 	
 func _exit_tree():
+	# REMOVE POPUP
+	behind_popups.remove_child(pop_add)
+	pop_add.free()
+	
+	# REMOVE ADDITIONAL TOOLBAR
 	for c in additional_mains:
 		remove_control_from_container(CONTAINER_CANVAS_EDITOR_MENU, c)
 		c.queue_free()
 	
+	# DISCONNECT SIGNALS
 	disconnect("scene_changed", self, "_on_scene_changed")
 
 func _on_scene_changed(new_root):
