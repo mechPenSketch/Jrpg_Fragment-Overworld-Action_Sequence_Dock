@@ -116,3 +116,8 @@ theme = ExtResource( 3 )
 icon = ExtResource( 6 )
 
 [node name="Text" parent="PanelContainer/RichTextLabel/ScrollContainer/VBoxContainer" instance=ExtResource( 8 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 68.0
+margin_right = 1010.0
+margin_bottom = 112.0

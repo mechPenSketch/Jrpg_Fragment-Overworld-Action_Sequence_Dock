@@ -9,31 +9,26 @@ theme = ExtResource( 2 )
 [node name="MarginContainer" parent="." index="0"]
 margin_left = 0.0
 margin_top = 0.0
-margin_right = 1010.0
-margin_bottom = 44.0
+margin_right = 1024.0
+margin_bottom = 576.0
 
 [node name="VBoxContainer" parent="MarginContainer" index="0"]
-margin_right = 1006.0
-margin_bottom = 40.0
+margin_right = 1020.0
+margin_bottom = 572.0
 
 [node name="HBoxContainer" parent="MarginContainer/VBoxContainer" index="0"]
-margin_right = 1002.0
+margin_right = 1016.0
 
 [node name="Control" parent="MarginContainer/VBoxContainer/HBoxContainer" index="2"]
-margin_right = 982.0
+margin_right = 996.0
 
 [node name="ToolButton" parent="MarginContainer/VBoxContainer/HBoxContainer" index="3"]
-margin_left = 986.0
-margin_right = 1002.0
+margin_left = 1000.0
+margin_right = 1016.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer" index="1"]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" index="1"]
 margin_top = 36.0
-margin_right = 1002.0
-margin_bottom = 36.0
-size_flags_vertical = 3
-scroll_horizontal_enabled = false
-
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/ScrollContainer" index="0"]
-margin_right = 1002.0
+margin_right = 1016.0
+margin_bottom = 50.0
 size_flags_horizontal = 3
-size_flags_vertical = 3
+expand_to_text_length = true
