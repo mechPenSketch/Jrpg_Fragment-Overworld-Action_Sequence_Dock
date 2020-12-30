@@ -16,19 +16,26 @@ margin_bottom = 576.0
 margin_right = 1020.0
 margin_bottom = 572.0
 
-[node name="HBoxContainer" parent="MarginContainer/VBoxContainer" index="0"]
+[node name="Header" parent="MarginContainer/VBoxContainer" index="0"]
 margin_right = 1016.0
 
-[node name="Control" parent="MarginContainer/VBoxContainer/HBoxContainer" index="2"]
+[node name="Control" parent="MarginContainer/VBoxContainer/Header" index="3"]
 margin_right = 996.0
 
-[node name="ToolButton" parent="MarginContainer/VBoxContainer/HBoxContainer" index="3"]
+[node name="ToolButton" parent="MarginContainer/VBoxContainer/Header" index="4"]
 margin_left = 1000.0
 margin_right = 1016.0
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" index="1"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" index="1"]
 margin_top = 36.0
 margin_right = 1016.0
 margin_bottom = 50.0
+text = "Default"
+align = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" index="2"]
+margin_top = 54.0
+margin_right = 1016.0
+margin_bottom = 68.0
 size_flags_horizontal = 3
 expand_to_text_length = true
