@@ -37,8 +37,7 @@ align = 2
 [node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer" index="2"]
 margin_top = 54.0
 margin_right = 1016.0
-margin_bottom = 96.0
-rect_min_size = Vector2( 0, 42 )
+margin_bottom = 54.0
 size_flags_vertical = 0
 __meta__ = {
 "_edit_use_anchors_": false

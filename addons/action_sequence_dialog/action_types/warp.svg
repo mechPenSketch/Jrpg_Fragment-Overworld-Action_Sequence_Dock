@@ -7,35 +7,35 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="warp.svg"
-   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
-   id="svg8"
-   version="1.1"
-   viewBox="0 0 8.4666665 8.4666669"
+   width="32"
    height="32"
-   width="32">
+   viewBox="0 0 8.4666665 8.4666669"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0 (4035a4fb49, 2020-05-01)"
+   sodipodi:docname="warp.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
-     inkscape:window-maximized="1"
-     inkscape:window-y="-11"
-     inkscape:window-x="-11"
-     inkscape:window-height="1346"
-     inkscape:window-width="2160"
-     units="px"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer1"
-     inkscape:document-units="px"
-     inkscape:cy="15.694138"
-     inkscape:cx="17.726013"
-     inkscape:zoom="15.839192"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="1"
-     borderopacity="1.0"
-     bordercolor="#666666"
+     id="base"
      pagecolor="#000000"
-     id="base" />
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="1"
+     inkscape:pageshadow="2"
+     inkscape:zoom="22.627417"
+     inkscape:cx="23.879656"
+     inkscape:cy="20.392854"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     inkscape:window-width="2160"
+     inkscape:window-height="1346"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -49,13 +49,18 @@
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
+     inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     inkscape:label="Layer 1">
+     id="layer1">
     <path
        transform="scale(0.26458333)"
-       d="M 14 4 L 14 16 L 4 6 L 4 18 L 14 18 L 16 18 L 6 28 L 18 28 L 18 16 L 28 26 L 28 14 L 18 14 L 16 14 L 26 4 L 14 4 z "
-       style="fill:#ffffff;fill-rule:evenodd;stroke-width:0.999999;fill-opacity:0.87843138"
-       id="rect1011" />
+       d="M 4 4 L 4 9.0039062 C 6.0902139 12.299015 8.6064125 14.710973 11.546875 16.203125 C 12.943992 17.086417 15.257707 17.980872 16 18 C 16.659819 18.000263 17.27731 17.675075 17.650391 17.130859 C 16.745371 20.634625 14.692779 23.799967 11.345703 26.410156 C 10.828742 26.813304 9.7718959 27.516995 8.9902344 28 L 28 28 L 28 22.65625 C 27.359926 21.639227 26.670038 20.694724 25.9375 19.837891 C 25.316304 19.111293 24.055231 17.884037 23.355469 17.326172 C 20.942591 15.461996 17.117502 14.022915 16 14 C 15.023406 13.9998 14.189474 14.704927 14.027344 15.667969 C 14.009224 15.507478 14.014534 15.31695 14.083984 14.978516 C 14.462691 13.133044 15.361001 11.125868 16.560547 9.4433594 C 17.724699 7.8104952 19.263939 6.257582 21.007812 4.9589844 C 21.45 4.6297042 21.923534 4.3116712 22.412109 4 L 4 4 z M 17.900391 15.380859 C 17.908091 15.399999 17.925771 15.415907 17.931641 15.435547 C 17.933841 15.442747 17.926381 15.451394 17.925781 15.458984 C 17.917881 15.432774 17.909391 15.406729 17.900391 15.380859 z "
+       style="fill:#ffffff;fill-opacity:0.878431;fill-rule:evenodd;stroke-width:0.0999999;stroke-linecap:square;stop-color:#000000"
+       id="path840" />
+    <path
+       transform="scale(0.26458333)"
+       id="path889"
+       d="M 13.421498,16.522545 C 11.472753,15.828363 9.6791535,14.719699 7.9490508,13.139904 7.0920957,12.3574 5.9932714,11.112375 5.2809535,10.116811 L 5.0286406,9.7641687 V 7.3824361 5.0007036 l 7.5781254,0.00141 7.578124,0.00141 -0.116195,0.099036 c -0.06391,0.05447 -0.355202,0.3030819 -0.647321,0.5524718 -0.659154,0.5627364 -1.880388,1.80226 -2.390232,2.4260282 -1.988848,2.4332544 -3.182606,5.0430434 -3.53697,7.7325094 l -0.02181,0.165546 0.259012,0.0293 0.259011,0.0293 0.02597,0.251579 c 0.01428,0.138368 0.0393,0.29678 0.05559,0.352025 0.01629,0.05525 0.0122,0.09943 -0.0091,0.09817 -0.02128,-0.0012 -0.309894,-0.09888 -0.641367,-0.216958 z"
+       style="fill:none;fill-opacity:0.878431;fill-rule:evenodd;stroke:none;stroke-width:0.1;stroke-linecap:square;stroke-opacity:1;stop-color:#000000" />
   </g>
 </svg>
