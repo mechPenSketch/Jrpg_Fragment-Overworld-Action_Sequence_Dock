@@ -47,8 +47,10 @@ func _on_settings_changed():
 	resize_textedit()
 
 func get_standard_textedit_height():
-	# TEXTEDIT'S MIN HEIGHT SHOULD BE 3 TIMES THE FONT
-	return main_font_size * 3
+	# TEXTEDIT'S MIN HEIGHT SHOULD BE 3 TIMES THE FONT SIZE
+	#	1pt = 1.33px
+	#	3pt = 4px
+	return main_font_size * 4
 
 func resize_textedit():
 	for n in action_list.get_children():

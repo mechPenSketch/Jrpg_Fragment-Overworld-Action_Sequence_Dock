@@ -34,7 +34,7 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Select a Node with metadata of \"as\"."
+text = "Select a Node with a metadata key of \"as_property\"."
 align = 1
 valign = 1
 autowrap = true
@@ -153,3 +153,15 @@ anchor_bottom = 0.0
 margin_top = 68.0
 margin_right = 1010.0
 margin_bottom = 130.0
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Error:  as_property in Node's metadata is not exported as an Array."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
