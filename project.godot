@@ -80,7 +80,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "action_sequence_dialog", "jrpg_overwolrd", "metadata_inspector", "snap_map" )
+enabled=PoolStringArray( "action_sequence_dialog", "jrpg_overwolrd", "snap_map" )
 
 [layer_names]
 

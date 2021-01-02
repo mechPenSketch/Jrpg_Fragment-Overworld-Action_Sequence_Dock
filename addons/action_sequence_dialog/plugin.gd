@@ -6,6 +6,10 @@ var editor_settings
 var dock
 var action_list
 
+var as_property
+const ERR_MISSING_PROPERTY = 3
+const ERR_WRONG_HINT = 2
+
 var main_font_size
 
 func _enter_tree():
@@ -37,9 +41,29 @@ func _exit_tree():
 
 func _on_selection_changed():
 	for n in editor_selection.get_selected_nodes():
-		if n is Event:
-			switch_dock_display(true)
-			return
+		if n.has_meta("as_property"):
+			var str_property = n.get_meta("as_property")
+			var dic_property
+			for p in n.get_property_list():
+				if p.name == str_property:
+					dic_property = p
+					break
+			
+			# TARGETTED PROPERTY SHOULD HAVE:
+			#	THE USAGE THAT, IN ADDITION TO DEFAULT SETTINGS,
+			#		SOULD BE STORABLE (usage: 8199)
+			#	THE EXPORT HINT OF ARRAY (hint: 24) FOLLOWED BY
+			#		DICTIONARY (hint_string: "18:")
+			if dic_property:
+				if dic_property['usage'] == 8199 and dic_property['hint'] == 24 and dic_property['hint_string'] == "18:":
+					as_property = get(n.get_meta("as_property"))
+					switch_dock_display(true)
+				else:
+					switch_dock_display(ERR_WRONG_HINT)
+				return
+			else:
+				switch_dock_display(ERR_MISSING_PROPERTY)
+				return
 	switch_dock_display(false)
 	
 func _on_settings_changed():
@@ -58,6 +82,12 @@ func resize_textedit():
 		if t:
 			t.rect_min_size.y = get_standard_textedit_height()
 
-func switch_dock_display(b:bool):
-	dock.get_child(0).set_visible(!b)
-	dock.get_child(1).set_visible(b)
+func switch_dock_display(v):
+	var i
+	if v is int:
+		i = v
+	else:
+		i = int(v)
+	
+	for j in dock.get_child_count():
+		dock.get_child(j).set_visible(j == i)

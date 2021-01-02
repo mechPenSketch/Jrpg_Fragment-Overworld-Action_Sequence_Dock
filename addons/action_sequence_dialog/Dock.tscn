@@ -30,8 +30,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="."]
-visible = false
+[node name="NotTheNode" type="Label" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "Select a Node with a metadata key of \"as_property\"."
@@ -154,11 +153,23 @@ margin_top = 68.0
 margin_right = 1010.0
 margin_bottom = 130.0
 
-[node name="Label2" type="Label" parent="."]
+[node name="WrongHint" type="Label" parent="."]
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-text = "Error:  as_property in Node's metadata is not exported as an Array."
+text = "Error:  The Node's property should be exported as (Array, Dictionary)."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissingProperty" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "Error:  Node does not have such property."
 align = 1
 valign = 1
 autowrap = true

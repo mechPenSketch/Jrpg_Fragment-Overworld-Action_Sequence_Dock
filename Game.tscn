@@ -104,7 +104,6 @@ cell_height = 32
 
 [node name="Player" parent="Grid" instance=ExtResource( 8 )]
 position = Vector2( 304, 112 )
-aspect_ratio = 1
 grid_x = 9
 grid_y = 3
 raycast_directions = {
@@ -113,10 +112,6 @@ Vector2( 0, -1 ): NodePath("RayUp"),
 Vector2( 0, 1 ): NodePath("RayDown"),
 Vector2( 1, 0 ): NodePath("RayRight")
 }
-action_sequences = [  ]
-
-[node name="CollisionShape2D" parent="Grid/Player" index="0"]
-aspect_ratio = 1
 
 [node name="Tween" parent="Grid/Player" index="2"]
 np_anim_player = NodePath("../../../../Overworld/Grid/Player/Sprite/AnimationPlayer")
