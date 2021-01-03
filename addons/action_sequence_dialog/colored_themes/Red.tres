@@ -20,7 +20,13 @@ bg_color = Color( 0.341176, 0, 0, 1 )
 bg_color = Color( 0.341176, 0, 0, 1 )
 
 [sub_resource type="StyleBoxFlat" id=8]
+resource_local_to_scene = true
 bg_color = Color( 0.694118, 0.14902, 0.14902, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.160784, 0, 0, 1 )
 
 [resource]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )

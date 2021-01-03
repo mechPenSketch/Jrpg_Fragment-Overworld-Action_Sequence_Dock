@@ -14,17 +14,14 @@ func _on_dock_resized():
 	new_width += hseparation
 	var btn_width_w_hsep = BTN_WIDTH + hseparation
 	var final_column = new_width / btn_width_w_hsep
-	if final_column <= 1:
-		final_column = 1
 	
 	# IF THERE'S ENOUGH LEFTOVER SPACE TO FIT A BUTTON
-	print(new_width)
-	print(btn_width_w_hsep)
-	print(final_column)
-	print(new_width % btn_width_w_hsep)
-	print(new_width % btn_width_w_hsep >= BTN_WIDTH)
 	if new_width % btn_width_w_hsep >= BTN_WIDTH:
 		# ADD ONE MORE COLUMN
 		final_column += 1
+	
+	# THERE SHOULD BE AT LEAST ONE COLUMN
+	if final_column <= 1:
+		final_column = 1
 	
 	set_columns(final_column)
