@@ -1,32 +1,29 @@
-[gd_resource type="Theme" load_steps=9 format=2]
+[gd_resource type="Theme" load_steps=8 format=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.300781, 0.144101, 0.144101, 1 )
+bg_color = Color( 0.262421, 0.386719, 0.2485, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.776471, 0.294118, 0.294118, 1 )
+bg_color = Color( 0.428866, 0.828125, 0.384149, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.596078, 0.0117647, 0.0117647, 1 )
+bg_color = Color( 0.156863, 0.454902, 0.12549, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.341176, 0, 0, 1 )
+bg_color = Color( 0.0745098, 0.254902, 0.054902, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
-[sub_resource type="StyleBoxFlat" id=7]
-bg_color = Color( 0.341176, 0, 0, 1 )
-
 [sub_resource type="StyleBoxFlat" id=8]
 resource_local_to_scene = true
-bg_color = Color( 0.596078, 0.0117647, 0.0117647, 1 )
+bg_color = Color( 0.156863, 0.454902, 0.12549, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.341176, 0, 0, 1 )
+border_color = Color( 0.0745098, 0.254902, 0.054902, 1 )
 
 [resource]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
@@ -51,7 +48,7 @@ LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource( 6 )
-LineEdit/styles/normal = SubResource( 7 )
+LineEdit/styles/normal = SubResource( 5 )
 LineEdit/styles/read_only = SubResource( 1 )
 PanelContainer/styles/panel = SubResource( 8 )
 TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
@@ -91,5 +88,5 @@ TextEdit/icons/space = null
 TextEdit/icons/tab = null
 TextEdit/styles/completion = null
 TextEdit/styles/focus = SubResource( 6 )
-TextEdit/styles/normal = SubResource( 7 )
+TextEdit/styles/normal = SubResource( 5 )
 TextEdit/styles/read_only = null
