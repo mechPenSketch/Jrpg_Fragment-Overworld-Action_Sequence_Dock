@@ -72,12 +72,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Actions" type="PanelContainer" parent="PanelContainer/RichTextLabel/ScrollContainer/List"]
+[node name="AddActions" type="PanelContainer" parent="PanelContainer/RichTextLabel/ScrollContainer/List"]
 margin_right = 1010.0
 margin_bottom = 64.0
 custom_styles/panel = SubResource( 1 )
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions"]
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions"]
 margin_left = 16.0
 margin_top = 16.0
 margin_right = 994.0
@@ -87,66 +87,74 @@ custom_constants/hseparation = 4
 columns = 27
 script = ExtResource( 13 )
 
-[node name="Text" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Text" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_right = 32.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
 icon = ExtResource( 1 )
 
-[node name="Choices" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Choices" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+disabled = true
 icon = ExtResource( 5 )
 
-[node name="Jump" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Jump" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+disabled = true
 icon = ExtResource( 7 )
 
-[node name="Animate" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Animate" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 108.0
 margin_right = 140.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+disabled = true
 icon = ExtResource( 10 )
 
-[node name="Warp" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Warp" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 144.0
 margin_right = 176.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+disabled = true
 icon = ExtResource( 12 )
 
-[node name="Emit" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Emit" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 180.0
 margin_right = 212.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+disabled = true
 icon = ExtResource( 9 )
 
-[node name="Call" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Call" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 216.0
 margin_right = 248.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+disabled = true
 icon = ExtResource( 11 )
 
-[node name="Label" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="Label" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 252.0
 margin_right = 284.0
 margin_bottom = 32.0
 theme = ExtResource( 3 )
+disabled = true
 icon = ExtResource( 4 )
 
-[node name="End" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer"]
+[node name="End" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
 margin_left = 288.0
 margin_right = 320.0
 margin_bottom = 32.0
 theme = ExtResource( 14 )
+disabled = true
 icon = ExtResource( 6 )
 
 [node name="Text" parent="PanelContainer/RichTextLabel/ScrollContainer/List" instance=ExtResource( 8 )]
@@ -179,4 +187,4 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="resized" from="." to="PanelContainer/RichTextLabel/ScrollContainer/List/Actions/GridContainer" method="_on_dock_resized"]
+[connection signal="resized" from="." to="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer" method="_on_dock_resized"]

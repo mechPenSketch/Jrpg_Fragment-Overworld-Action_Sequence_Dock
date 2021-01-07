@@ -3,9 +3,16 @@ extends EditorPlugin
 
 var editor_selection
 var editor_settings
-var dock
-var action_list
 
+var dock
+const ACTION_WINDOW_FOLDER = "res://addons/action_sequence_dialog/action_window/"
+const EXT_SCENE = ".tscn"
+var dict_file_windows = {}
+var action_list
+var add_action
+var btn_container
+
+var selected_node
 var as_property
 const ERR_MISSING_PROPERTY = 3
 const ERR_WRONG_HINT = 2
@@ -30,8 +37,19 @@ func _enter_tree():
 	switch_dock_display(false)
 	action_list = dock.find_node("List")
 	resize_textedit()
+	
+	#	GET [ADD ACTIONS]
+	add_action = action_list.get_node("AddActions")
+	#		CONNECTING BUTTONS IN [ADD ACTIONS]
+	btn_container = add_action.get_child(0)
+	for b in btn_container.get_children():
+		b.connect("pressed", self, "_on_aabtn_pressed", [b.get_name()])
 
 func _exit_tree():
+	# DISCONNECTING BUTTONS IN [ADD ACTIONS]
+	for b in btn_container.get_children():
+		b.disconnect("pressed", self, "_on_aabtn_pressed")
+	
 	# REMOVE FROM DOCK
 	remove_control_from_docks(dock)
 	dock.free()
@@ -40,6 +58,16 @@ func _exit_tree():
 	editor_settings.disconnect("settings_changed", self, "_on_settings_changed")
 
 func _on_selection_changed():
+	
+	selected_node = null
+	
+	# CLEAR LIST IN DOCK
+	for c in action_list.get_children():
+		if c != add_action:
+			c.queue_free()
+		else:
+			break
+	
 	for n in editor_selection.get_selected_nodes():
 		if n.has_meta("as_property"):
 			var str_property = n.get_meta("as_property")
@@ -56,19 +84,66 @@ func _on_selection_changed():
 			#		DICTIONARY (hint_string: "18:")
 			if dic_property:
 				if dic_property['usage'] == 8199 and dic_property['hint'] == 24 and dic_property['hint_string'] == "18:":
-					as_property = get(n.get_meta("as_property"))
+					selected_node = n
+					as_property = n.get(n.get_meta("as_property"))
 					switch_dock_display(true)
+					
+					# ADD ACTIONS TO LIST
+					var action_count = 0 if as_property == null else as_property.size()
+					#	DEFINE NUMBER OF DIGITS IN COUNT
+					var count_digits = String(action_count).length()
+					for i in action_count:
+						add_action_window(i, count_digits)
+						
 				else:
 					switch_dock_display(ERR_WRONG_HINT)
 				return
 			else:
 				switch_dock_display(ERR_MISSING_PROPERTY)
 				return
+	
 	switch_dock_display(false)
 	
 func _on_settings_changed():
 	main_font_size = editor_settings.get_setting("interface/editor/main_font_size")
 	resize_textedit()
+
+func _on_aabtn_pressed(n:String):
+	var i
+	if as_property == null:
+		as_property = []
+		i = 0
+	else:
+		i = as_property.size()
+	
+	as_property.append({"name": n})
+	
+	add_action_window(i)
+	
+	selected_node.property_list_changed_notify()
+
+func add_action_window(i, d=0):
+	var action = as_property[i]
+	var a_name = action["name"]
+	
+	if !a_name in dict_file_windows:
+		var file_path = ACTION_WINDOW_FOLDER + a_name + EXT_SCENE
+		dict_file_windows[a_name] = load(file_path)
+	
+	var window = dict_file_windows[a_name].instance()
+	action_list.add_child(window)
+	window.find_node("Number").set_text(get_int_format(i,d))
+	
+	action_list.move_child(window, i)
+
+func get_int_format(i, d) ->String:
+	var si = String(i)
+	var final = ""
+	while d > si.length():
+		final += "0"
+		d -= 1
+	final += si
+	return final
 
 func get_standard_textedit_height():
 	# TEXTEDIT'S MIN HEIGHT SHOULD BE 3 TIMES THE FONT SIZE
