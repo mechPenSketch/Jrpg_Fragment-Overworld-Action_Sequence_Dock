@@ -132,16 +132,22 @@ func add_action_window(i, d=0):
 	
 	var window = dict_file_windows[a_name].instance()
 	action_list.add_child(window)
-	window.find_node("Number").set_text(get_int_format(i,d))
+	
+	var str_i = String(i)
+	if d < str_i.length(): d = str_i.length()
+	window.find_node("Number").set_text(str_i.pad_zeros(d))
 	
 	action_list.move_child(window, i)
 
 func get_int_format(i, d) ->String:
 	var si = String(i)
 	var final = ""
-	while d > si.length():
-		final += "0"
-		d -= 1
+	
+	var r = d - si.length()
+	if r > 0:
+		for i in range(r):
+			final += "0"
+	
 	final += si
 	return final
 

@@ -1,29 +1,32 @@
-[gd_resource type="Theme" load_steps=8 format=2]
+[gd_resource type="Theme" load_steps=9 format=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.262421, 0.386719, 0.2485, 1 )
+bg_color = Color( 0.200511, 0.206377, 0.351563, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.251368, 0.648438, 0.209571, 1 )
+bg_color = Color( 0.405834, 0.42011, 0.773438, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
-bg_color = Color( 0.156863, 0.454902, 0.12549, 1 )
+bg_color = Color( 0.105882, 0.121569, 0.509804, 1 )
 
 [sub_resource type="StyleBoxFlat" id=5]
-bg_color = Color( 0.0745098, 0.254902, 0.054902, 1 )
+bg_color = Color( 0.105882, 0.0941176, 0.333333, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.105882, 0.0941176, 0.333333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
 resource_local_to_scene = true
-bg_color = Color( 0.0862745, 0.584314, 0.0352941, 1 )
+bg_color = Color( 0, 0.0274576, 0.707031, 1 )
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.0745098, 0.254902, 0.054902, 1 )
+border_color = Color( 0.341176, 0, 0, 1 )
 
 [resource]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
@@ -48,9 +51,9 @@ LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource( 6 )
-LineEdit/styles/normal = SubResource( 5 )
+LineEdit/styles/normal = SubResource( 7 )
 LineEdit/styles/read_only = SubResource( 1 )
-PanelContainer/styles/panel = SubResource( 7 )
+PanelContainer/styles/panel = SubResource( 8 )
 TextEdit/colors/background_color = Color( 0, 0, 0, 0 )
 TextEdit/colors/bookmark_color = Color( 0.08, 0.49, 0.98, 1 )
 TextEdit/colors/brace_mismatch_color = Color( 1, 0.2, 0.2, 1 )
@@ -88,5 +91,5 @@ TextEdit/icons/space = null
 TextEdit/icons/tab = null
 TextEdit/styles/completion = null
 TextEdit/styles/focus = SubResource( 6 )
-TextEdit/styles/normal = SubResource( 5 )
+TextEdit/styles/normal = SubResource( 7 )
 TextEdit/styles/read_only = null
