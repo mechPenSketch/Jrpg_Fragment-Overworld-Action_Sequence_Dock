@@ -36,7 +36,6 @@ func _enter_tree():
 	add_control_to_dock(DOCK_SLOT_RIGHT_UR, dock)
 	switch_dock_display(false)
 	action_list = dock.find_node("List")
-	resize_textedit()
 	
 	#	GET [ADD ACTIONS]
 	add_action = action_list.get_node("AddActions")
@@ -106,7 +105,9 @@ func _on_selection_changed():
 	
 func _on_settings_changed():
 	main_font_size = editor_settings.get_setting("interface/editor/main_font_size")
-	resize_textedit()
+	
+	for n in action_list.get_children():
+		resize_textedit(n)
 
 func _on_aabtn_pressed(n:String):
 	var i
@@ -116,7 +117,7 @@ func _on_aabtn_pressed(n:String):
 	else:
 		i = as_property.size()
 	
-	as_property.append({"name": n})
+	as_property.append({"action_type": n})
 	
 	add_action_window(i)
 	
@@ -124,7 +125,7 @@ func _on_aabtn_pressed(n:String):
 
 func add_action_window(i, d=0):
 	var action = as_property[i]
-	var a_name = action["name"]
+	var a_name = action["action_type"]
 	
 	if !a_name in dict_file_windows:
 		var file_path = ACTION_WINDOW_FOLDER + a_name + EXT_SCENE
@@ -133,9 +134,13 @@ func add_action_window(i, d=0):
 	var window = dict_file_windows[a_name].instance()
 	action_list.add_child(window)
 	
+	# SET ACTION INDEX NUMBER
 	var str_i = String(i)
 	if d < str_i.length(): d = str_i.length()
 	window.find_node("Number").set_text(str_i.pad_zeros(d))
+	
+	# CONNECTING SIGNALS AND SETTING SUB-CONTENT
+	resize_textedit(window)
 	
 	action_list.move_child(window, i)
 
@@ -157,11 +162,10 @@ func get_standard_textedit_height():
 	#	3pt = 4px
 	return main_font_size * 4
 
-func resize_textedit():
-	for n in action_list.get_children():
-		var t = n.find_node("TextEdit")
-		if t:
-			t.rect_min_size.y = get_standard_textedit_height()
+func resize_textedit(n):
+	var t = n.find_node("TextEdit")
+	if t:
+		t.rect_min_size.y = get_standard_textedit_height()
 
 func switch_dock_display(v):
 	var i

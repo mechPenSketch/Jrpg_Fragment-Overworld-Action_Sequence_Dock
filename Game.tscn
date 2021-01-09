@@ -112,6 +112,11 @@ Vector2( 0, -1 ): NodePath("RayUp"),
 Vector2( 0, 1 ): NodePath("RayDown"),
 Vector2( 1, 0 ): NodePath("RayRight")
 }
+action_sequences = [ {
+"action_type": "Text"
+}, {
+"action_type": "End"
+} ]
 
 [node name="Tween" parent="Grid/Player" index="2"]
 np_anim_player = NodePath("../../../../Overworld/Grid/Player/Sprite/AnimationPlayer")

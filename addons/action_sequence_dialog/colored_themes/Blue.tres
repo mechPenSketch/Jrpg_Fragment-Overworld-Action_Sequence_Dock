@@ -26,7 +26,7 @@ border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color( 0.341176, 0, 0, 1 )
+border_color = Color( 0.105882, 0.0941176, 0.333333, 1 )
 
 [resource]
 Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
