@@ -113,7 +113,8 @@ Vector2( 0, 1 ): NodePath("RayDown"),
 Vector2( 1, 0 ): NodePath("RayRight")
 }
 action_sequences = [ {
-"action_type": "Text"
+"action_type": "Text",
+"default_text": "Hello!"
 }, {
 "action_type": "Text"
 }, {

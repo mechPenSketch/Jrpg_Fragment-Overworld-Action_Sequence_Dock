@@ -139,15 +139,40 @@ func _on_action_window_close_pressed(w):
 	selected_node.property_list_changed_notify()
 	
 	# RESETTING ACTION INDEX LABELS FOR ALL ENTRIES AFTER IT
-	print(action_list.get_children())
 	for j in range(i, as_property.size()):
-		print(j)
 		var str_j = String(j)
-		print(action_list.get_child(j))
-		print(action_list.get_child(j).find_node("Number"))
-		print(action_list.get_child(j).find_node("Number").get_text())
-		action_list.get_child(j).find_node("Number").set_text(str_j.pad_zeros(size_digits))
-		print(action_list.get_child(j).find_node("Number").get_text())
+
+func _on_defualt_text_changed(te):
+	var i = te.find_parent("ActionWindow").get_index()
+	var dict = as_property[i]
+	var text = te.get_text()
+	var key = "default_text"
+	
+	if text == "":
+		if dict.has(key):
+			dict.erase(key)
+			selected_node.property_list_changed_notify()
+	else:
+		dict[key] = text
+		selected_node.property_list_changed_notify()
+
+func _on_international_text_changed(te, l):
+	var i = te.find_parent("ActionWindow").get_index()
+	var dict = as_property[i]
+	var text = te.get_text()
+	var key = "int_text"
+	var key_lang = l
+	
+	if text == "":
+		if dict.has(key):
+			if dict[key].has(key_lang):
+				dict[key].erase(key_lang)
+				if dict[key].empty():
+					dict.erase[key]
+				selected_node.property_list_changed_notify()
+	else:
+		dict[key][key_lang] = text
+		selected_node.property_list_changed_notify()
 
 func add_action_window(i, d=0):
 	var action = as_property[i]
@@ -166,7 +191,7 @@ func add_action_window(i, d=0):
 	window.find_node("Number").set_text(str_i.pad_zeros(d))
 	
 	# CONNECTING SIGNALS AND SETTING SUB-CONTENT
-	window.find_node("Remove").connect("pressed", self, "_on_action_window_close_pressed", [window])
+	window.mass_connect(self, action)
 	resize_textedit(window)
 	
 	action_list.move_child(window, i)

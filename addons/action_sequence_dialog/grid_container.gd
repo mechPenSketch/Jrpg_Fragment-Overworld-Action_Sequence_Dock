@@ -16,9 +16,9 @@ func _on_dock_resized():
 	var final_column = new_width / btn_width_w_hsep
 	
 	# IF THERE'S ENOUGH LEFTOVER SPACE TO FIT A BUTTON
-	if new_width % btn_width_w_hsep >= BTN_WIDTH:
+	#if new_width % btn_width_w_hsep >= BTN_WIDTH:
 		# ADD ONE MORE COLUMN
-		final_column += 1
+		#final_column += 1
 	
 	# THERE SHOULD BE AT LEAST ONE COLUMN
 	if final_column <= 1:

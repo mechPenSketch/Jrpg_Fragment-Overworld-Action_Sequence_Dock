@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://addons/action_sequence_dialog/action_window/ActionWindow.tscn" type="PackedScene" id=1]
 [ext_resource path="res://addons/action_sequence_dialog/colored_themes/Red.tres" type="Theme" id=2]
+[ext_resource path="res://addons/action_sequence_dialog/action_icons/text.svg" type="Texture" id=3]
+[ext_resource path="res://addons/action_sequence_dialog/action_window/components/text_edit.gd" type="Script" id=4]
 
 [node name="ActionWindow" instance=ExtResource( 1 )]
 theme = ExtResource( 2 )
@@ -19,7 +21,16 @@ margin_bottom = 570.0
 [node name="Header" parent="MarginContainer/VBoxContainer" index="0"]
 margin_right = 1014.0
 
+[node name="TextureRect" parent="MarginContainer/VBoxContainer/Header" index="0"]
+margin_right = 32.0
+texture = ExtResource( 3 )
+
+[node name="Number" parent="MarginContainer/VBoxContainer/Header" index="1"]
+margin_left = 36.0
+margin_right = 56.0
+
 [node name="LabelCdr" parent="MarginContainer/VBoxContainer/Header" index="2"]
+margin_left = 60.0
 margin_right = 106.0
 text = "- Text"
 
@@ -45,6 +56,8 @@ margin_right = 1014.0
 margin_bottom = 54.0
 size_flags_vertical = 0
 wrap_enabled = true
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+[connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/TextEdit" method="_on_connecting_editor_plugin"]
