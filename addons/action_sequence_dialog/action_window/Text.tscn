@@ -27,7 +27,7 @@ text = "- Text"
 margin_left = 110.0
 margin_right = 994.0
 
-[node name="ToolButton" parent="MarginContainer/VBoxContainer/Header" index="4"]
+[node name="Remove" parent="MarginContainer/VBoxContainer/Header" index="4"]
 margin_left = 998.0
 margin_right = 1014.0
 

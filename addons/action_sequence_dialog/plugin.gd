@@ -9,6 +9,7 @@ const ACTION_WINDOW_FOLDER = "res://addons/action_sequence_dialog/action_window/
 const EXT_SCENE = ".tscn"
 var dict_file_windows = {}
 var action_list
+var size_digits
 var add_action
 var btn_container
 
@@ -90,9 +91,9 @@ func _on_selection_changed():
 					# ADD ACTIONS TO LIST
 					var action_count = 0 if as_property == null else as_property.size()
 					#	DEFINE NUMBER OF DIGITS IN COUNT
-					var count_digits = String(action_count).length()
+					size_digits = String(action_count).length()
 					for i in action_count:
-						add_action_window(i, count_digits)
+						add_action_window(i, size_digits)
 						
 				else:
 					switch_dock_display(ERR_WRONG_HINT)
@@ -121,7 +122,32 @@ func _on_aabtn_pressed(n:String):
 	
 	add_action_window(i)
 	
+	# UPDATE PROPERTY LIST
 	selected_node.property_list_changed_notify()
+
+func _on_action_window_close_pressed(w):
+	# GET INDEX
+	var i = w.get_index()
+	
+	# REMOVE WINDOW
+	action_list.remove_child(w)
+	w.queue_free()
+	
+	# ALSO REMOVE DICTIONARY FROM ARRAY
+	as_property.remove(i)
+	#	UPDATE PROPERTY LIST
+	selected_node.property_list_changed_notify()
+	
+	# RESETTING ACTION INDEX LABELS FOR ALL ENTRIES AFTER IT
+	print(action_list.get_children())
+	for j in range(i, as_property.size()):
+		print(j)
+		var str_j = String(j)
+		print(action_list.get_child(j))
+		print(action_list.get_child(j).find_node("Number"))
+		print(action_list.get_child(j).find_node("Number").get_text())
+		action_list.get_child(j).find_node("Number").set_text(str_j.pad_zeros(size_digits))
+		print(action_list.get_child(j).find_node("Number").get_text())
 
 func add_action_window(i, d=0):
 	var action = as_property[i]
@@ -134,33 +160,23 @@ func add_action_window(i, d=0):
 	var window = dict_file_windows[a_name].instance()
 	action_list.add_child(window)
 	
-	# SET ACTION INDEX NUMBER
+	# SET ACTION INDEX LEBELS
 	var str_i = String(i)
 	if d < str_i.length(): d = str_i.length()
 	window.find_node("Number").set_text(str_i.pad_zeros(d))
 	
 	# CONNECTING SIGNALS AND SETTING SUB-CONTENT
+	window.find_node("Remove").connect("pressed", self, "_on_action_window_close_pressed", [window])
 	resize_textedit(window)
 	
 	action_list.move_child(window, i)
-
-func get_int_format(i, d) ->String:
-	var si = String(i)
-	var final = ""
-	
-	var r = d - si.length()
-	if r > 0:
-		for i in range(r):
-			final += "0"
-	
-	final += si
-	return final
 
 func get_standard_textedit_height():
 	# TEXTEDIT'S MIN HEIGHT SHOULD BE 3 TIMES THE FONT SIZE
 	#	1pt = 1.33px
 	#	3pt = 4px
-	return main_font_size * 4
+	#	1 LINE HEIGHT = x1.5 THE FONT SOZE
+	return main_font_size * 6
 
 func resize_textedit(n):
 	var t = n.find_node("TextEdit")

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fin.svg-33632ec59ca097d78b1c0e80eed1159b.stex"
+path="res://.import/call.svg-1b08e816406200642cdff9f3fded1c74.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/action_sequence_dialog/action_types/fin.svg"
-dest_files=[ "res://.import/fin.svg-33632ec59ca097d78b1c0e80eed1159b.stex" ]
+source_file="res://addons/action_sequence_dialog/action_icons/call.svg"
+dest_files=[ "res://.import/call.svg-1b08e816406200642cdff9f3fded1c74.stex" ]
 
 [params]
 

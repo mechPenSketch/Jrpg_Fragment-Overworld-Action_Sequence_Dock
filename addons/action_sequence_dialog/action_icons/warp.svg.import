@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flag.svg-b7ec08a7e7be4942d7624ab105afed8e.stex"
+path="res://.import/warp.svg-d0c50a100acd858b6ac0e4186c90d99f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/action_sequence_dialog/action_types/flag.svg"
-dest_files=[ "res://.import/flag.svg-b7ec08a7e7be4942d7624ab105afed8e.stex" ]
+source_file="res://addons/action_sequence_dialog/action_icons/warp.svg"
+dest_files=[ "res://.import/warp.svg-d0c50a100acd858b6ac0e4186c90d99f.stex" ]
 
 [params]
 
