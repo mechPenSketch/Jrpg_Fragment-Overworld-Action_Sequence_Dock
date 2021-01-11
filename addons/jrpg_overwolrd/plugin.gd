@@ -2,6 +2,7 @@ tool
 extends EditorPlugin
 
 var additional_mains = []
+const INDEX_AFTER_VIEW = 25
 var behind_popups
 var pop_add
 
@@ -16,9 +17,10 @@ func _enter_tree():
 	add_event.connect("pressed", self, "_on_add_event_pressed")
 	
 	additional_mains += [VSeparator.new(), add_event]
-	for c in additional_mains:
-		add_control_to_container(CONTAINER_CANVAS_EDITOR_MENU, c)
-		
+	for i in additional_mains.size():
+		add_control_to_container(CONTAINER_CANVAS_EDITOR_MENU, additional_mains[i])
+		additional_mains[i].get_parent().move_child(additional_mains[i], INDEX_AFTER_VIEW + i)
+	
 	# POPUPS
 	#	DEFINE PLACEMENT TO PUT POPUP IN
 	behind_popups = get_script_create_dialog().get_parent()
