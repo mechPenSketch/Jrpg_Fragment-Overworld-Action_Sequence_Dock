@@ -109,7 +109,6 @@ margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 theme = ExtResource( 16 )
-disabled = true
 icon = ExtResource( 7 )
 
 [node name="Animate" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
@@ -149,7 +148,6 @@ margin_left = 252.0
 margin_right = 284.0
 margin_bottom = 32.0
 theme = ExtResource( 8 )
-disabled = true
 icon = ExtResource( 4 )
 
 [node name="End" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]
