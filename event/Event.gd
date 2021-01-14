@@ -10,6 +10,7 @@ var grid
 
 signal turning
 var is_moving = false
+export (NodePath) var np_tween
 var tween
 var target_pos = Vector2()
 var blocks = []
@@ -37,9 +38,10 @@ func _ready():
 	else:
 		grid = get_parent()
 	
-		tween = $Tween
+		if np_tween: tween = get_node(np_tween)
 		
-		turn(Vector2(0,1))
+		if raycast_directions.has(Vector2(0,1)):
+			turn(Vector2(0,1))
 
 func disconnect_children_sprites():
 	if children_sprites:

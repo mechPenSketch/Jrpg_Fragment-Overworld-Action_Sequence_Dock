@@ -1,13 +1,9 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://event/Prop.tscn" type="PackedScene" id=1]
 [ext_resource path="res://event/char_tween.gd" type="Script" id=2]
-[ext_resource path="res://event/four_dir_sheet.gd" type="Script" id=3]
-[ext_resource path="res://event/alice.png" type="Texture" id=4]
 [ext_resource path="res://addons/snap_map/nodes/raycast_piece.gd" type="Script" id=5]
 [ext_resource path="res://event/Incoming.tscn" type="PackedScene" id=6]
-
-
 
 [sub_resource type="Animation" id=1]
 tracks/0/type = "value"
@@ -110,6 +106,10 @@ tracks/0/keys = {
 }
 
 [node name="Actor" instance=ExtResource( 1 )]
+position = Vector2( 16, 16 )
+cell_width = 32
+cell_height = 32
+np_tween = NodePath("Tween")
 raycast_directions = {
 Vector2( -1, 0 ): NodePath("RayLeft"),
 Vector2( 0, -1 ): NodePath("RayUp"),
@@ -118,19 +118,9 @@ Vector2( 1, 0 ): NodePath("RayRight")
 }
 incoming = ExtResource( 6 )
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
-texture = ExtResource( 4 )
+[node name="Sprite" parent="." index="1"]
 vframes = 4
 hframes = 4
-script = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
-vframes_per_side = 1
-side = 0
-action_frame = 0
-action_frame_coord = Vector2( 0, 0 )
-is_symmetrical = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
 anims/Down = SubResource( 1 )

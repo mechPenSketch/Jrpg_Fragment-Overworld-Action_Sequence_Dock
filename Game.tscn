@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://map/base_tile.png" type="Texture" id=1]
 [ext_resource path="res://overworld.gd" type="Script" id=2]
+[ext_resource path="res://event/signpost.png" type="Texture" id=3]
+[ext_resource path="res://event/Prop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/snap_map/nodes/snapbound_tiles.gd" type="Script" id=5]
 [ext_resource path="res://event/Actor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://event/bob.png" type="Texture" id=11]
 [ext_resource path="res://event/controller.gd" type="Script" id=12]
+[ext_resource path="res://event/alice.png" type="Texture" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -104,6 +108,8 @@ cell_height = 32
 
 [node name="Player" parent="Grid" instance=ExtResource( 8 )]
 position = Vector2( 304, 112 )
+cell_width = 32
+cell_height = 32
 grid_x = 9
 grid_y = 3
 raycast_directions = {
@@ -113,7 +119,50 @@ Vector2( 0, 1 ): NodePath("RayDown"),
 Vector2( 1, 0 ): NodePath("RayRight")
 }
 
-[node name="Tween" parent="Grid/Player" index="2"]
-np_anim_player = NodePath("../../../../Overworld/Grid/Player/Sprite/AnimationPlayer")
+[node name="Sprite" parent="Grid/Player" index="1"]
+texture = ExtResource( 13 )
+
+[node name="Signpost" parent="Grid" instance=ExtResource( 4 )]
+position = Vector2( 528, 240 )
+collision_mask = 0
+cell_width = 32
+cell_height = 32
+grid_x = 16
+grid_y = 7
+raycast_directions = {
+
+}
+action_sequences = [ {
+"action_type": "Text",
+"default_text": "Hello! This is a sample dialog."
+} ]
+
+[node name="Sprite" parent="Grid/Signpost" index="1"]
+texture = ExtResource( 3 )
+
+[node name="Bob" parent="Grid" instance=ExtResource( 8 )]
+position = Vector2( 336, 304 )
+cell_width = 32
+cell_height = 32
+grid_x = 10
+grid_y = 9
+raycast_directions = {
+Vector2( -1, 0 ): NodePath("RayLeft"),
+Vector2( 0, -1 ): NodePath("RayUp"),
+Vector2( 0, 1 ): NodePath("RayDown"),
+Vector2( 1, 0 ): NodePath("RayRight")
+}
+action_sequences = [ {
+"action_type": "Text",
+"default_text": "Hi, do you like apples ot oranges?"
+} ]
+
+[node name="Sprite" parent="Grid/Bob" index="1"]
+texture = ExtResource( 11 )
+[connection signal="sig_dir" from="Controller" to="Grid/Player" method="_direction"]
 
 [editable path="Grid/Player"]
+
+[editable path="Grid/Signpost"]
+
+[editable path="Grid/Bob"]
