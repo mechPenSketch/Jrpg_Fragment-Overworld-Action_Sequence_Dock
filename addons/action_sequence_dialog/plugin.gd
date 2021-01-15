@@ -148,13 +148,7 @@ func _on_defualt_text_changed(te):
 	var text = te.get_text()
 	var key = "default_text"
 	
-	if text == "":
-		if dict.has(key):
-			dict.erase(key)
-			selected_node.property_list_changed_notify()
-	else:
-		dict[key] = text
-		selected_node.property_list_changed_notify()
+	set_text(dict, text, key)
 
 func _on_international_text_changed(te, l):
 	var i = te.find_parent("ActionWindow").get_index()
@@ -173,6 +167,14 @@ func _on_international_text_changed(te, l):
 	else:
 		dict[key][key_lang] = text
 		selected_node.property_list_changed_notify()
+
+func _on_le_changed(le):
+	var i = le.find_parent("ActionWindow").get_index()
+	var dict = as_property[i]
+	var text = le.get_text()
+	var key = le.associated_key
+	
+	set_text(dict, text, key)
 
 func add_action_window(i, d=0):
 	var action = as_property[i]
@@ -207,6 +209,15 @@ func resize_textedit(n):
 	var t = n.find_node("TextEdit")
 	if t:
 		t.rect_min_size.y = get_standard_textedit_height()
+	
+func set_text(dict, text, key):
+	if text == "":
+		if dict.has(key):
+			dict.erase(key)
+			selected_node.property_list_changed_notify()
+	else:
+		dict[key] = text
+		selected_node.property_list_changed_notify()
 
 func switch_dock_display(v):
 	var i
