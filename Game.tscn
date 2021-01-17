@@ -108,8 +108,6 @@ cell_height = 32
 
 [node name="Player" parent="Grid" instance=ExtResource( 8 )]
 position = Vector2( 304, 112 )
-cell_width = 32
-cell_height = 32
 grid_x = 9
 grid_y = 3
 raycast_directions = {
@@ -121,6 +119,10 @@ Vector2( 1, 0 ): NodePath("RayRight")
 
 [node name="Sprite" parent="Grid/Player" index="1"]
 texture = ExtResource( 13 )
+vframes_per_side = 1
+side = 0
+action_frame = 0
+action_frame_coord = Vector2( 0, 0 )
 
 [node name="Signpost" parent="Grid" instance=ExtResource( 4 )]
 position = Vector2( 528, 240 )
@@ -139,11 +141,13 @@ action_sequences = [ {
 
 [node name="Sprite" parent="Grid/Signpost" index="1"]
 texture = ExtResource( 3 )
+vframes_per_side = 1
+side = 0
+action_frame = 0
+action_frame_coord = Vector2( 0, 0 )
 
 [node name="Bob" parent="Grid" instance=ExtResource( 8 )]
 position = Vector2( 336, 304 )
-cell_width = 32
-cell_height = 32
 grid_x = 10
 grid_y = 9
 raycast_directions = {
@@ -159,6 +163,11 @@ action_sequences = [ {
 
 [node name="Sprite" parent="Grid/Bob" index="1"]
 texture = ExtResource( 11 )
+vframes_per_side = 1
+side = 0
+action_frame = 0
+action_frame_coord = Vector2( 0, 0 )
+[connection signal="action" from="Controller" to="Grid/Player" method="_action"]
 [connection signal="sig_dir" from="Controller" to="Grid/Player" method="_direction"]
 
 [editable path="Grid/Player"]

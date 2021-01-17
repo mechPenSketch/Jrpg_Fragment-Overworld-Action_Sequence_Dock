@@ -66,6 +66,9 @@ func _draw():
 func _on_children_sprites_texture_changed():
 	update()
 
+func _action():
+	print("A")
+
 func _direction(dir:Vector2):
 	if !is_moving:
 		
