@@ -71,6 +71,18 @@ func _on_dialog_confirmed():
 	
 	# GENERATE NEW EVENT
 	var inst_event = load(final_filepath).instance()
+	
+	#	SET PARAMETERS
+	#var editor_children = get_tree().get_root().get_node("EditorNode").get_children()
+	#var snap_map
+	#for c in editor_children:
+	#	if c is EditorPlugin and c.get_plugin_name() == "Snap Map":
+	#		snap_map = c
+	#		break
+	
+	#if snap_map:
+	#	print(snap_map)
+	
 	#	NAME OF NEW EVENT
 	var new_name = pop_add.find_node("EditName").get_text()
 	if new_name:

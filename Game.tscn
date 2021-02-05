@@ -90,6 +90,7 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 
 [node name="Base" type="Node"]
 script = ExtResource( 2 )
+np_dialog = NodePath("GUI/DialogContainer")
 
 [node name="Controller" type="Node" parent="."]
 script = ExtResource( 12 )
@@ -167,6 +168,32 @@ vframes_per_side = 1
 side = 0
 action_frame = 0
 action_frame_coord = Vector2( 0, 0 )
+
+[node name="GUI" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogContainer" type="PanelContainer" parent="GUI"]
+pause_mode = 2
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -29.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="GUI/DialogContainer"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 1017.0
+margin_bottom = 22.0
+fit_content_height = true
+scroll_active = false
 [connection signal="action" from="Controller" to="Grid/Player" method="_action"]
 [connection signal="sig_dir" from="Controller" to="Grid/Player" method="_direction"]
 

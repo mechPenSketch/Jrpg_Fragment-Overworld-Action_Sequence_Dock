@@ -3,6 +3,8 @@ extends PlayingPiece
 
 class_name Event
 
+var base
+
 var default_texture
 var children_sprites
 
@@ -36,6 +38,8 @@ func _ready():
 		# WHEN CHILDREN SPRITES' TEXTURES ARE SET
 		prepare_for_when_children_sprites_are_set()
 	else:
+		base = get_node("/root/Base")
+		
 		grid = get_parent()
 	
 		if np_tween: tween = get_node(np_tween)
@@ -67,7 +71,9 @@ func _on_children_sprites_texture_changed():
 	update()
 
 func _action():
-	print("A")
+	var collider = raycast.get_collider()
+	if collider:
+		collider.perform_action(0)
 
 func _direction(dir:Vector2):
 	if !is_moving:
@@ -100,6 +106,9 @@ func _on_area_exited(a):
 	blocks.erase(a)
 	is_blocked = blocks.size()
 
+func end_action():
+	pass
+
 func get_default_texture_filepath():
 	return "res://event/event.svg"
 
@@ -129,6 +138,23 @@ func is_drawable_sprite_then_children(node):
 				return true
 	return false
 
+func perform_action(i):
+	
+	# GET ACTION: DICTIONARY
+	var ad = action_sequences[i]
+	match ad["action_type"]:
+		"Text":
+			base.set_dialog(ad["default_text"])
+		_:
+			# END
+			end_action()
+	
+	# FINALLY, GOTO NEXT ACTION
+	if i < action_sequences.size() - 1:
+		perform_action(i + 1)
+	else:
+		end_action()
+
 func plugset_cell_width(w):
 	.plugset_cell_width(w)
 	update()
@@ -136,7 +162,7 @@ func plugset_cell_width(w):
 func plugset_cell_height(h):
 	.plugset_cell_height(h)
 	update()
-	
+
 func turn(dir:Vector2):
 	raycast = get_node(raycast_directions[dir])
 	emit_signal("turning", dir)
