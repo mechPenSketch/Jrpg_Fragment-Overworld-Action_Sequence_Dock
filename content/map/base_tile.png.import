@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/signpost.png-1d9d0ff901f21fc0333b8651093bf501.stex"
+path="res://.import/base_tile.png-4a4fccbd2f2748c8deac3f638f6c1d00.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://event/signpost.png"
-dest_files=[ "res://.import/signpost.png-1d9d0ff901f21fc0333b8651093bf501.stex" ]
+source_file="res://content/map/base_tile.png"
+dest_files=[ "res://.import/base_tile.png-4a4fccbd2f2748c8deac3f638f6c1d00.stex" ]
 
 [params]
 

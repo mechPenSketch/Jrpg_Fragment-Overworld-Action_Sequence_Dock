@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Controller",
 "language": "GDScript",
-"path": "res://event/controller.gd"
+"path": "res://content/event/controller.gd"
 }, {
 "base": "PlayingPiece",
 "class": "Event",
 "language": "GDScript",
-"path": "res://event/event.gd"
+"path": "res://content/event/event.gd"
 }, {
 "base": "Node",
 "class": "Overworld",
@@ -57,7 +57,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "ColShapePiece": "res://addons/snap_map/nodes/colshape_piece.svg",
 "ColShapePieceEx": "res://addons/snap_map/nodes/colshape_expiece.svg",
-"Controller": "res://event/game_controller_icon.svg",
+"Controller": "res://content/event/game_controller_icon.svg",
 "Event": "",
 "Overworld": "",
 "PlayingPiece": "res://addons/snap_map/nodes/playing_piece.svg",

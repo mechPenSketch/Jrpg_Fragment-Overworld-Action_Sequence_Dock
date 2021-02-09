@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/obstacle.png-00303a3f7cf30febe1cf2072e1f7503b.stex"
+path="res://.import/event.svg-8f8d6562ad779f49571a8a7aee3acc06.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://map/obstacle.png"
-dest_files=[ "res://.import/obstacle.png-00303a3f7cf30febe1cf2072e1f7503b.stex" ]
+source_file="res://content/event/event.svg"
+dest_files=[ "res://.import/event.svg-8f8d6562ad779f49571a8a7aee3acc06.stex" ]
 
 [params]
 

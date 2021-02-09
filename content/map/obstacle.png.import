@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/game_controller_icon.svg-0200dd51585ed47d38a96e5f83dbfcd6.stex"
+path="res://.import/obstacle.png-febece79cbb527dfd006d6b218d931f9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://event/game_controller_icon.svg"
-dest_files=[ "res://.import/game_controller_icon.svg-0200dd51585ed47d38a96e5f83dbfcd6.stex" ]
+source_file="res://content/map/obstacle.png"
+dest_files=[ "res://.import/obstacle.png-febece79cbb527dfd006d6b218d931f9.stex" ]
 
 [params]
 

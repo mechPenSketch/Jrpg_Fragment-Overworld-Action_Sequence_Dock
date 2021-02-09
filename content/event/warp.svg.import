@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/warp.svg-6ebc462c4d69e088f69da813f5fd5131.stex"
+path="res://.import/warp.svg-da62f44e1bfc88f87cc425183aae3bb3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://event/warp.svg"
-dest_files=[ "res://.import/warp.svg-6ebc462c4d69e088f69da813f5fd5131.stex" ]
+source_file="res://content/event/warp.svg"
+dest_files=[ "res://.import/warp.svg-da62f44e1bfc88f87cc425183aae3bb3.stex" ]
 
 [params]
 

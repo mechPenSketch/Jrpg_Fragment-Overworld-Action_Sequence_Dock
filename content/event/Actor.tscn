@@ -1,9 +1,10 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://event/Prop.tscn" type="PackedScene" id=1]
-[ext_resource path="res://event/char_tween.gd" type="Script" id=2]
+[ext_resource path="res://content/event/Prop.tscn" type="PackedScene" id=1]
+[ext_resource path="res://content/event/char_tween.gd" type="Script" id=2]
 [ext_resource path="res://addons/snap_map/nodes/raycast_piece.gd" type="Script" id=5]
-[ext_resource path="res://event/Incoming.tscn" type="PackedScene" id=6]
+[ext_resource path="res://content/event/Incoming.tscn" type="PackedScene" id=6]
+
 
 [sub_resource type="Animation" id=1]
 tracks/0/type = "value"

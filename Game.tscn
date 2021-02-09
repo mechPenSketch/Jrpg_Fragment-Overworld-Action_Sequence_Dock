@@ -1,14 +1,14 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://map/base_tile.png" type="Texture" id=1]
+[ext_resource path="res://content/map/base_tile.png" type="Texture" id=1]
 [ext_resource path="res://overworld.gd" type="Script" id=2]
-[ext_resource path="res://event/signpost.png" type="Texture" id=3]
-[ext_resource path="res://event/Prop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://content/event/signpost.png" type="Texture" id=3]
+[ext_resource path="res://content/event/Prop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/snap_map/nodes/snapbound_tiles.gd" type="Script" id=5]
-[ext_resource path="res://event/Actor.tscn" type="PackedScene" id=8]
-[ext_resource path="res://event/bob.png" type="Texture" id=11]
-[ext_resource path="res://event/controller.gd" type="Script" id=12]
-[ext_resource path="res://event/alice.png" type="Texture" id=13]
+[ext_resource path="res://content/event/alice.png" type="Texture" id=7]
+[ext_resource path="res://content/event/Actor.tscn" type="PackedScene" id=8]
+[ext_resource path="res://content/event/bob.png" type="Texture" id=9]
+[ext_resource path="res://content/event/controller.gd" type="Script" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
@@ -88,9 +88,12 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 3/z_index = 0
 
-[node name="Base" type="Node"]
+[node name="Game" type="Node"]
+
+[node name="Action" type="Node" parent="."]
+pause_mode = 2
 script = ExtResource( 2 )
-np_dialog = NodePath("GUI/DialogContainer")
+np_dialog = NodePath("../../Game/GUI/DialogContainer")
 
 [node name="Controller" type="Node" parent="."]
 script = ExtResource( 12 )
@@ -119,11 +122,14 @@ Vector2( 1, 0 ): NodePath("RayRight")
 }
 
 [node name="Sprite" parent="Grid/Player" index="1"]
-texture = ExtResource( 13 )
+texture = ExtResource( 7 )
 vframes_per_side = 1
 side = 0
 action_frame = 0
 action_frame_coord = Vector2( 0, 0 )
+
+[node name="Tween" parent="Grid/Player" index="2"]
+np_anim_player = NodePath("../../../../Game/Grid/Player/Sprite/AnimationPlayer")
 
 [node name="Signpost" parent="Grid" instance=ExtResource( 4 )]
 position = Vector2( 528, 240 )
@@ -163,13 +169,17 @@ action_sequences = [ {
 } ]
 
 [node name="Sprite" parent="Grid/Bob" index="1"]
-texture = ExtResource( 11 )
+texture = ExtResource( 9 )
 vframes_per_side = 1
 side = 0
 action_frame = 0
 action_frame_coord = Vector2( 0, 0 )
 
+[node name="Tween" parent="Grid/Bob" index="2"]
+np_anim_player = NodePath("../../../../Game/Grid/Bob/Sprite/AnimationPlayer")
+
 [node name="GUI" type="Control" parent="."]
+pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -177,7 +187,6 @@ __meta__ = {
 }
 
 [node name="DialogContainer" type="PanelContainer" parent="GUI"]
-pause_mode = 2
 visible = false
 anchor_top = 1.0
 anchor_right = 1.0
@@ -194,8 +203,14 @@ margin_right = 1017.0
 margin_bottom = 22.0
 fit_content_height = true
 scroll_active = false
+
+[node name="Finish" type="ToolButton" parent="GUI/DialogContainer"]
+margin_right = 12.0
+margin_bottom = 22.0
+button_mask = 0
 [connection signal="action" from="Controller" to="Grid/Player" method="_action"]
 [connection signal="sig_dir" from="Controller" to="Grid/Player" method="_direction"]
+[connection signal="pressed" from="GUI/DialogContainer/Finish" to="Action" method="_onto_next_action"]
 
 [editable path="Grid/Player"]
 

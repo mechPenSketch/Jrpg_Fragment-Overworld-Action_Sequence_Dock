@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/alice.png-51da7a0bd7c57905a94a3eb63081c090.stex"
+path="res://.import/alice.png-46fb430059f0f7a3e7fa31780d15c2cb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://event/alice.png"
-dest_files=[ "res://.import/alice.png-51da7a0bd7c57905a94a3eb63081c090.stex" ]
+source_file="res://content/event/alice.png"
+dest_files=[ "res://.import/alice.png-46fb430059f0f7a3e7fa31780d15c2cb.stex" ]
 
 [params]
 

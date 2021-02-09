@@ -73,7 +73,7 @@ func _on_children_sprites_texture_changed():
 func _action():
 	var collider = raycast.get_collider()
 	if collider:
-		collider.perform_action(0)
+		collider.perform_actions()
 
 func _direction(dir:Vector2):
 	if !is_moving:
@@ -106,11 +106,8 @@ func _on_area_exited(a):
 	blocks.erase(a)
 	is_blocked = blocks.size()
 
-func end_action():
-	pass
-
 func get_default_texture_filepath():
-	return "res://event/event.svg"
+	return "res://content/event/event.svg"
 
 func get_children_sprites(node):
 	var array = []
@@ -138,22 +135,8 @@ func is_drawable_sprite_then_children(node):
 				return true
 	return false
 
-func perform_action(i):
-	
-	# GET ACTION: DICTIONARY
-	var ad = action_sequences[i]
-	match ad["action_type"]:
-		"Text":
-			base.set_dialog(ad["default_text"])
-		_:
-			# END
-			end_action()
-	
-	# FINALLY, GOTO NEXT ACTION
-	if i < action_sequences.size() - 1:
-		perform_action(i + 1)
-	else:
-		end_action()
+func perform_actions(i = 0):
+	get_node("/root/Game/Action").initiate_action_sequence(self, i)
 
 func plugset_cell_width(w):
 	.plugset_cell_width(w)
