@@ -71,12 +71,14 @@ func _on_children_sprites_texture_changed():
 	update()
 
 func _action():
-	var collider = raycast.get_collider()
-	if collider:
-		collider.perform_actions()
+	# PAUSED NODE CAN STILL RECIEVE SIGNALS
+	if !get_tree().is_paused():
+		var collider = raycast.get_collider()
+		if collider:
+			collider.perform_actions()
 
 func _direction(dir:Vector2):
-	if !is_moving:
+	if !get_tree().is_paused() and !is_moving:
 		
 		turn(dir)
 		if !raycast.is_colliding():
