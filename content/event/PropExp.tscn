@@ -1,8 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://content/event/EventExp.tscn" type="PackedScene" id=1]
-[ext_resource path="res://content/event/alice.png" type="Texture" id=2]
+[ext_resource path="res://content/event/sprites/characters/alice.png" type="Texture" id=2]
 [ext_resource path="res://content/event/four_dir_sheet.gd" type="Script" id=3]
+
+
 
 
 

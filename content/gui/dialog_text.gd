@@ -11,7 +11,6 @@ func _action():
 	match current_state:
 		COMPLETE:
 			emit_signal("finish")
-			print("Fin")
 
 func _on_dialog_visibility_changed():
 	if get_parent().is_visible():
@@ -23,7 +22,6 @@ func _process(delta):
 	visible_characters += dvis
 	
 	if visible_characters >= get_total_character_count():
-		print("C")
 		change_state(COMPLETE)
 
 func _ready():

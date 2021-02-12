@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bob.png-3b5fdaa299bfc9ee55b805d47a862d03.stex"
+path="res://.import/alice.png-7c7c6c791f604b39b7d2a7900ad4da9f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://content/event/bob.png"
-dest_files=[ "res://.import/bob.png-3b5fdaa299bfc9ee55b805d47a862d03.stex" ]
+source_file="res://content/event/sprites/characters/alice.png"
+dest_files=[ "res://.import/alice.png-7c7c6c791f604b39b7d2a7900ad4da9f.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

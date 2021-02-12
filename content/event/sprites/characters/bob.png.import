@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/signpost.png-45862cb7a2eefb5aa0f2e0c50bc8f620.stex"
+path="res://.import/bob.png-266197d5233ccc1c9880ec67712cce96.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://content/event/signpost.png"
-dest_files=[ "res://.import/signpost.png-45862cb7a2eefb5aa0f2e0c50bc8f620.stex" ]
+source_file="res://content/event/sprites/characters/bob.png"
+dest_files=[ "res://.import/bob.png-266197d5233ccc1c9880ec67712cce96.stex" ]
 
 [params]
 

@@ -15,10 +15,9 @@ var dialog_text
 
 func _ready():
 	dialog = get_node(np_dialog)
-	dialog_text = dialog.get_node("Text")
+	dialog_text = dialog.find_node("Text")
 	
 func _onto_next_action():
-	print("Next")
 	if action_index < current_event_as.size() - 1:
 		action_index += 1
 		perform_action()
