@@ -9,6 +9,9 @@ var dvis = 1
 
 func _action():
 	match current_state:
+		PROGRESS:
+			set_percent_visible(1.0)
+			change_state(COMPLETE)
 		COMPLETE:
 			emit_signal("finish")
 

@@ -1,6 +1,6 @@
 extends Node
 
-class_name Overworld
+class_name ActionManager
 
 var state = 0
 enum {NORM, DIALOG}

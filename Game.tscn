@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://content/map/base_tile.png" type="Texture" id=1]
-[ext_resource path="res://overworld.gd" type="Script" id=2]
+[ext_resource path="res://addons/action_sequence_dialog/nodes/action_manager.gd" type="Script" id=2]
 [ext_resource path="res://content/event/sprites/signpost.png" type="Texture" id=3]
 [ext_resource path="res://content/event/Prop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://addons/snap_map/nodes/snapbound_tiles.gd" type="Script" id=5]
