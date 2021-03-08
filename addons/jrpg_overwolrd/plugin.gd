@@ -7,8 +7,6 @@ var behind_popups
 var pop_add
 
 func _enter_tree():
-	# SIGNAL CONNECTIONS
-	connect("scene_changed", self, "_on_scene_changed")
 	
 	# ADD TO MAIN TOOLBAR
 	#	ADD EVENT
@@ -39,15 +37,6 @@ func _exit_tree():
 	for c in additional_mains:
 		remove_control_from_container(CONTAINER_CANVAS_EDITOR_MENU, c)
 		c.queue_free()
-	
-	# DISCONNECT SIGNALS
-	disconnect("scene_changed", self, "_on_scene_changed")
-
-func _on_scene_changed(new_root):
-	var root_is_Overworld = new_root != null and new_root is Overworld
-	
-	for c in additional_mains:
-		c.set_visible(root_is_Overworld)
 
 func _on_add_event_pressed():
 	pop_add.popup_centered()

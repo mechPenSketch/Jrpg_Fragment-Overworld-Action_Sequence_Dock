@@ -8,7 +8,7 @@ func _ready():
 	_on_dock_resized()
 
 func _on_dock_resized():
-	var new_width = int(find_parent("Dock").get_size().x)
+	var new_width = int(find_parent("Actions").get_size().x)
 	new_width -= PARENT_MARGIN * 2
 	var hseparation = get("custom_constants/hseparation")
 	new_width += hseparation
