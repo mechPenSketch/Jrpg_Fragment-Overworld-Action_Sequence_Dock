@@ -1,0 +1,172 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://addons/action_sequence_dialog/action_window/ActionWindow.tscn" type="PackedScene" id=1]
+[ext_resource path="res://addons/action_sequence_dialog/colored_themes/Orange.tres" type="Theme" id=2]
+[ext_resource path="res://addons/action_sequence_dialog/action_icons/choices.svg" type="Texture" id=3]
+[ext_resource path="res://addons/action_sequence_dialog/action_window/components/text_edit.gd" type="Script" id=4]
+[ext_resource path="res://addons/action_sequence_dialog/action_window/close.svg" type="Texture" id=5]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.619608, 0.415686, 0.254902, 1 )
+
+[node name="ActionWindow" instance=ExtResource( 1 )]
+theme = ExtResource( 2 )
+
+[node name="MarginContainer" parent="." index="0"]
+margin_left = 1.0
+margin_top = 1.0
+margin_right = 1023.0
+margin_bottom = 575.0
+
+[node name="VBoxContainer" parent="MarginContainer" index="0"]
+margin_right = 1018.0
+margin_bottom = 570.0
+
+[node name="Header" parent="MarginContainer/VBoxContainer" index="0"]
+margin_right = 1014.0
+
+[node name="TextureRect" parent="MarginContainer/VBoxContainer/Header" index="0"]
+margin_right = 32.0
+texture = ExtResource( 3 )
+
+[node name="Number" parent="MarginContainer/VBoxContainer/Header" index="1"]
+margin_left = 36.0
+margin_right = 56.0
+
+[node name="LabelCdr" parent="MarginContainer/VBoxContainer/Header" index="2"]
+margin_left = 60.0
+margin_right = 134.0
+text = "- Choices"
+
+[node name="Control" parent="MarginContainer/VBoxContainer/Header" index="3"]
+margin_left = 138.0
+margin_right = 994.0
+
+[node name="Remove" parent="MarginContainer/VBoxContainer/Header" index="4"]
+margin_left = 998.0
+margin_right = 1014.0
+
+[node name="Prelude" type="Label" parent="MarginContainer/VBoxContainer" index="1"]
+visible = false
+margin_top = 36.0
+margin_right = 1014.0
+margin_bottom = 50.0
+size_flags_vertical = 1
+text = "Size"
+align = 2
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer" index="2"]
+visible = false
+margin_top = 36.0
+margin_right = 1014.0
+margin_bottom = 36.0
+size_flags_vertical = 0
+wrap_enabled = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Size" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="3"]
+margin_top = 36.0
+margin_right = 1014.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Size" index="0"]
+margin_right = 505.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Size:"
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/Size" index="1"]
+margin_left = 509.0
+margin_right = 1014.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="4"]
+margin_top = 54.0
+margin_right = 1014.0
+margin_bottom = 106.0
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
+margin_right = 1014.0
+margin_bottom = 16.0
+custom_styles/panel = SubResource( 1 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer" index="0"]
+margin_right = 1014.0
+margin_bottom = 16.0
+
+[node name="Index" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" index="0"]
+margin_top = 1.0
+margin_right = 994.0
+margin_bottom = 15.0
+size_flags_horizontal = 3
+text = "Choice 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ToolButton" type="ToolButton" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer/HBoxContainer" index="1"]
+margin_left = 998.0
+margin_right = 1014.0
+margin_bottom = 16.0
+icon = ExtResource( 5 )
+
+[node name="Text" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="1"]
+margin_top = 20.0
+margin_right = 1014.0
+margin_bottom = 34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Text" index="0"]
+margin_right = 505.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Text"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/Text" index="1"]
+margin_left = 509.0
+margin_right = 1014.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+wrap_enabled = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Jump" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="2"]
+margin_top = 38.0
+margin_right = 1014.0
+margin_bottom = 52.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/Jump" index="0"]
+margin_right = 505.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+text = "Target"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Input" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/Jump" index="1"]
+margin_left = 509.0
+margin_right = 1014.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+wrap_enabled = true
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/TextEdit" method="_on_connecting_editor_plugin"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://addons/action_sequence_dialog/action_icons/text.svg" type="Texture" id=1]
 [ext_resource path="res://addons/action_sequence_dialog/panel_actions.svg" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://addons/action_sequence_dialog/colored_themes/Purple.tres" type="Theme" id=14]
 [ext_resource path="res://addons/action_sequence_dialog/colored_themes/Green.tres" type="Theme" id=15]
 [ext_resource path="res://addons/action_sequence_dialog/colored_themes/Yellow.tres" type="Theme" id=16]
+[ext_resource path="res://addons/action_sequence_dialog/colored_themes/Orange.tres" type="Theme" id=17]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -100,8 +101,7 @@ icon = ExtResource( 1 )
 margin_left = 36.0
 margin_right = 68.0
 margin_bottom = 32.0
-theme = ExtResource( 16 )
-disabled = true
+theme = ExtResource( 17 )
 icon = ExtResource( 5 )
 
 [node name="Jump" type="Button" parent="PanelContainer/RichTextLabel/ScrollContainer/List/AddActions/GridContainer"]

@@ -48,12 +48,14 @@ margin_right = 1014.0
 margin_bottom = 50.0
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" index="0"]
-margin_right = 47.0
+margin_right = 505.0
 margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
 text = "Target: "
 
 [node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" index="1"]
-margin_left = 51.0
+margin_left = 509.0
 margin_right = 1014.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
