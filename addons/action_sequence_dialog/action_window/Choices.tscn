@@ -6,8 +6,8 @@
 [ext_resource path="res://addons/action_sequence_dialog/action_window/components/text_edit.gd" type="Script" id=4]
 [ext_resource path="res://addons/action_sequence_dialog/action_window/close.svg" type="Texture" id=5]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.619608, 0.415686, 0.254902, 1 )
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.768627, 0.432353, 0, 1 )
 
 [node name="ActionWindow" instance=ExtResource( 1 )]
 theme = ExtResource( 2 )
@@ -67,32 +67,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Size" type="HBoxContainer" parent="MarginContainer/VBoxContainer" index="3"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="3"]
 margin_top = 36.0
 margin_right = 1014.0
-margin_bottom = 50.0
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Size" index="0"]
-margin_right = 505.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-text = "Size:"
-
-[node name="SpinBox" type="SpinBox" parent="MarginContainer/VBoxContainer/Size" index="1"]
-margin_left = 509.0
-margin_right = 1014.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" index="4"]
-margin_top = 54.0
-margin_right = 1014.0
-margin_bottom = 106.0
+margin_bottom = 88.0
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" index="0"]
 margin_right = 1014.0
 margin_bottom = 16.0
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/PanelContainer" index="0"]
 margin_right = 1014.0
@@ -169,4 +152,10 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" index="4"]
+margin_top = 92.0
+margin_right = 1014.0
+margin_bottom = 106.0
+text = "+ Add Choice"
 [connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/TextEdit" method="_on_connecting_editor_plugin"]
