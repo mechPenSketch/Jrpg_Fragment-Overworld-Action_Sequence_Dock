@@ -111,6 +111,7 @@ func _on_settings_changed():
 		resize_textedit(n)
 
 func _on_aabtn_pressed(n:String):
+	# ADD ACTION BUTTON FROM THE DOCK
 	var i
 	if as_property == null:
 		as_property = []
@@ -124,6 +125,10 @@ func _on_aabtn_pressed(n:String):
 	
 	# UPDATE PROPERTY LIST
 	selected_node.property_list_changed_notify()
+
+func _on_acbtn_pressed(btn):
+	# ADD CHOICE BUTTON
+	pass
 
 func _on_action_window_close_pressed(w):
 	# GET INDEX
