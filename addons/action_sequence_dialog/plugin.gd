@@ -126,9 +126,22 @@ func _on_aabtn_pressed(n:String):
 	# UPDATE PROPERTY LIST
 	selected_node.property_list_changed_notify()
 
-func _on_acbtn_pressed(btn):
-	# ADD CHOICE BUTTON
-	pass
+func _on_acbtn_pressed(btn, fil):
+	# INPUT: ORIGINAL BUTTON, FILE TO CHOICE COMPONENET
+	
+	#	NEW INSTANCE
+	var choice = fil.instance()
+	
+	#	INTERFACE
+	#		ADD CHOICE BUTTON
+	var parent = btn.get_parent()
+	parent.add_child(choice)
+	
+	#		MOVE CHOICE ABOVE BUTTON
+	var target_i = btn.get_index() - 1
+	parent.move_child(choice, target_i)
+	
+	#	DICTIONARY
 
 func _on_action_window_close_pressed(w):
 	# GET INDEX
