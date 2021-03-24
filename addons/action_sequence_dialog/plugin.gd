@@ -111,7 +111,7 @@ func _on_settings_changed():
 		resize_textedit(n)
 
 func _on_aabtn_pressed(n:String):
-	# ADD ACTION BUTTON FROM THE DOCK
+	# ADD AN ACTION FROM THE DOCK
 	var i
 	if as_property == null:
 		as_property = []
@@ -127,7 +127,18 @@ func _on_aabtn_pressed(n:String):
 	selected_node.property_list_changed_notify()
 
 func _on_acbtn_pressed(btn, fil):
+	# ADDS NEW CHOICE TO THE CHOICES ACTION WINDOW
 	# INPUT: ORIGINAL BUTTON, FILE TO CHOICE COMPONENET
+	
+	#	DICTIONARY
+	var i = btn.find_parent("ActionWindow").get_index()
+	var dict = as_property[i]
+	var key = "choices"
+	var new_choice_dict = {}
+	if dict.has(key):
+		dict[key].append(new_choice_dict)
+	else:
+		dict[key] = [new_choice_dict]
 	
 	#	NEW INSTANCE
 	var choice = fil.instance()
@@ -137,11 +148,14 @@ func _on_acbtn_pressed(btn, fil):
 	var parent = btn.get_parent()
 	parent.add_child(choice)
 	
+	#		CHANGE HEADER
+	#			GET INDEX
+	var new_index = dict[key].find(new_choice_dict)
+	choice.find_node("Index").set_text("Choice " + String(new_index))
+	
 	#		MOVE CHOICE ABOVE BUTTON
 	var target_i = btn.get_index() - 1
 	parent.move_child(choice, target_i)
-	
-	#	DICTIONARY
 
 func _on_action_window_close_pressed(w):
 	# GET INDEX
