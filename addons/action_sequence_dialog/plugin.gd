@@ -151,6 +151,7 @@ func _on_acbtn_pressed(btn, fil):
 	#		CHANGE HEADER
 	#			GET INDEX
 	var new_index = dict[key].find(new_choice_dict)
+	choice.set_index(new_index)
 	choice.find_node("Index").set_text("Choice " + String(new_index))
 	
 	#		MOVE CHOICE ABOVE BUTTON
