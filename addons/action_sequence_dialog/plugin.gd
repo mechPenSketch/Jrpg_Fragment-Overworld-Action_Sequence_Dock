@@ -209,6 +209,15 @@ func _on_le_changed(le):
 	
 	set_text(dict, text, key)
 
+func _on_le_in_choice_changed(le):
+	var i = le.find_parent("ActionWindow").get_index()
+	var dict = as_property[i]
+	var ci = le.find_parent("Choice").get_index()
+	var text = le.get_text()
+	var key = le.associated_key
+	
+	set_text(dict["choices"][ci], text, key)
+
 func add_action_window(i, d=0):
 	var action = as_property[i]
 	var a_name = action["action_type"]

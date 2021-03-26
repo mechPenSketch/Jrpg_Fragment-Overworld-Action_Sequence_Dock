@@ -4,7 +4,7 @@
 [ext_resource path="res://addons/action_sequence_dialog/colored_themes/Orange.tres" type="Theme" id=2]
 [ext_resource path="res://addons/action_sequence_dialog/action_icons/choices.svg" type="Texture" id=3]
 [ext_resource path="res://addons/action_sequence_dialog/action_window/components/text_edit.gd" type="Script" id=4]
-[ext_resource path="res://addons/action_sequence_dialog/action_window/components/add_choice.gd" type="Script" id=6]
+[ext_resource path="res://addons/action_sequence_dialog/action_window/components/choice/add_choice.gd" type="Script" id=6]
 
 [node name="ActionWindow" instance=ExtResource( 1 )]
 theme = ExtResource( 2 )
