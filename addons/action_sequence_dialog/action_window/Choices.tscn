@@ -70,6 +70,6 @@ margin_right = 1014.0
 margin_bottom = 50.0
 text = "+ Add Choice"
 script = ExtResource( 6 )
-choice_filepath = "res://addons/action_sequence_dialog/action_window/components/Choice.tscn"
-[connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/AddChoice" method="_on_connecting_editor_plugin"]
+choice_filepath = "res://addons/action_sequence_dialog/action_window/components/choice/Choice.tscn"
 [connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/TextEdit" method="_on_connecting_editor_plugin"]
+[connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/AddChoice" method="_on_connecting_editor_plugin"]
