@@ -61,4 +61,5 @@ margin_bottom = 14.0
 size_flags_horizontal = 3
 script = ExtResource( 4 )
 associated_key = "target"
+signal_call = "_on_le_changed"
 [connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/HBoxContainer/LineEdit" method="_on_connecting_editor_plugin"]

@@ -148,6 +148,9 @@ func _on_acbtn_pressed(btn, fil):
 	var parent = btn.get_parent()
 	parent.add_child(choice)
 	
+	#		CONNECT FROM EDITOR PLUGIN
+	choice.mass_connect(self, new_choice_dict)
+	
 	#		CHANGE HEADER
 	#			GET INDEX
 	var new_index = dict[key].find(new_choice_dict)
@@ -201,19 +204,17 @@ func _on_international_text_changed(te, l):
 		dict[key][key_lang] = text
 		selected_node.property_list_changed_notify()
 
-func _on_le_changed(le):
+func _on_le_changed(text, le):
 	var i = le.find_parent("ActionWindow").get_index()
 	var dict = as_property[i]
-	var text = le.get_text()
 	var key = le.associated_key
 	
 	set_text(dict, text, key)
 
-func _on_le_in_choice_changed(le):
+func _on_le_in_choice_changed(text, le):
 	var i = le.find_parent("ActionWindow").get_index()
 	var dict = as_property[i]
 	var ci = le.find_parent("Choice").get_index()
-	var text = le.get_text()
 	var key = le.associated_key
 	
 	set_text(dict["choices"][ci], text, key)

@@ -35,7 +35,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Delete" type="ToolButton" parent="Header/HBoxContainer"]
+[node name="Remove" type="ToolButton" parent="Header/HBoxContainer"]
 margin_left = 986.0
 margin_right = 1014.0
 margin_bottom = 24.0
@@ -44,14 +44,15 @@ icon = ExtResource( 3 )
 [node name="Text" type="HBoxContainer" parent="."]
 margin_top = 28.0
 margin_right = 1014.0
-margin_bottom = 42.0
+margin_bottom = 52.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Text"]
+margin_top = 5.0
 margin_right = 505.0
-margin_bottom = 14.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Text"
 __meta__ = {
@@ -68,16 +69,17 @@ associated_key = "text"
 signal_call = "_on_le_in_choice_changed"
 
 [node name="Jump" type="HBoxContainer" parent="."]
-margin_top = 46.0
+margin_top = 56.0
 margin_right = 1014.0
-margin_bottom = 60.0
+margin_bottom = 80.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Jump"]
+margin_top = 5.0
 margin_right = 505.0
-margin_bottom = 14.0
+margin_bottom = 19.0
 size_flags_horizontal = 3
 text = "Target"
 __meta__ = {
@@ -92,3 +94,5 @@ size_flags_horizontal = 3
 script = ExtResource( 2 )
 associated_key = "jump_target"
 signal_call = "_on_le_in_choice_changed"
+[connection signal="connect_to_editor" from="." to="Text/LineEdit" method="_on_connecting_editor_plugin"]
+[connection signal="connect_to_editor" from="." to="Jump/LineEdit" method="_on_connecting_editor_plugin"]
