@@ -155,13 +155,14 @@ func _on_acbtn_pressed(btn, fil):
 	#			GET INDEX
 	var new_index = dict[key].find(new_choice_dict)
 	choice.set_index(new_index)
-	choice.find_node("Index").set_text("Choice " + String(new_index))
 	
 	#		MOVE CHOICE ABOVE BUTTON
 	var target_i = btn.get_index() - 1
 	parent.move_child(choice, target_i)
 
 func _on_action_window_close_pressed(w):
+	# INPUT: ACTION WINDOW
+	
 	# GET INDEX
 	var i = w.get_index()
 	
@@ -177,6 +178,41 @@ func _on_action_window_close_pressed(w):
 	# RESETTING ACTION INDEX LABELS FOR ALL ENTRIES AFTER IT
 	for j in range(i, as_property.size()):
 		var str_j = String(j)
+
+func _on_choice_close_pressed(c):
+	# INPUT: CHOICE FROM CHOICE WINDOW
+	
+	# GET CHOICE INDEX
+	#	INDEX OF CHOICE DICT FROM ARRAY OF CHOICES
+	var cid = c.get_index_from_dict()
+	#	INDEX OF CHILD CHOICE FROM CHOICES WINDOW
+	var ciw = c.get_index()
+	
+	# REMOVE FROM CHOICE WINDOW
+	var parent = c.get_parent()
+	#	GET CHOICE WINDOW BEFORE REMOVAL
+	var w = c.find_parent("ActionWindow")
+	parent.remove_child(c)
+	c.queue_free()
+	
+	# ALSO REMOVE DICTIONARY FROM ARRAY
+	#	GET WINDOW INDEX
+	#		INDEX OF CHOICE WINDOW FROM DOCK
+	var wi = w.get_index()
+	#	GET CHOICES
+	var choices = as_property[wi]["choices"]
+	choices.remove(cid)
+	#	UPDATE PROPERTY LIST
+	selected_node.property_list_changed_notify()
+	
+	# FINALLY, RESETTING INDEXES FOR SUBSEQUENT CHOICES
+	#	FIND DIFFERENCE BETWEEN INDEXES
+	var diff = ciw - wi
+	for i in range(ciw, parent.get_child_count()):
+		if parent.get_child(i) is SubChoice:
+			parent.get_child(i).set_index(i - diff)
+		else:
+			break
 
 func _on_defualt_text_changed(te):
 	var i = te.find_parent("ActionWindow").get_index()

@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/snap_map/nodes/snapbound_tiles.gd"
 }, {
+"base": "VBoxContainer",
+"class": "SubChoice",
+"language": "GDScript",
+"path": "res://addons/action_sequence_dialog/action_window/components/choice/comp_choice.gd"
+}, {
 "base": "Object",
 "class": "TypeFormattingLogic",
 "language": "GDScript",
@@ -63,6 +68,7 @@ _global_script_class_icons={
 "PlayingPiece": "res://addons/snap_map/nodes/playing_piece.svg",
 "RayCastPiece": "res://addons/snap_map/nodes/raycast_piece.svg",
 "SnapboundTiles": "res://addons/snap_map/nodes/snapbound_tiles.svg",
+"SubChoice": "",
 "TypeFormattingLogic": ""
 }
 
