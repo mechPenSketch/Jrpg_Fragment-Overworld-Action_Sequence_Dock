@@ -131,7 +131,7 @@ func _on_acbtn_pressed(btn, fil):
 	# INPUT: ORIGINAL BUTTON, FILE TO CHOICE COMPONENET
 	
 	#	DICTIONARY
-	var i = btn.find_parent("ActionWindow").get_index()
+	var i = get_aw_parent(btn).get_index()
 	var dict = as_property[i]
 	var key = "choices"
 	var new_choice_dict = {}
@@ -190,7 +190,7 @@ func _on_choice_close_pressed(c):
 	# REMOVE FROM CHOICE WINDOW
 	var parent = c.get_parent()
 	#	GET CHOICE WINDOW BEFORE REMOVAL
-	var w = c.find_parent("ActionWindow")
+	var w = get_aw_parent(c)
 	parent.remove_child(c)
 	c.queue_free()
 	
@@ -214,7 +214,7 @@ func _on_choice_close_pressed(c):
 			break
 
 func _on_defualt_text_changed(te):
-	var i = te.find_parent("ActionWindow").get_index()
+	var i = get_aw_parent(te).get_index()
 	var dict = as_property[i]
 	var text = te.get_text()
 	var key = "default_text"
@@ -222,7 +222,7 @@ func _on_defualt_text_changed(te):
 	set_text(dict, text, key)
 
 func _on_international_text_changed(te, l):
-	var i = te.find_parent("ActionWindow").get_index()
+	var i = get_aw_parent(te).get_index()
 	var dict = as_property[i]
 	var text = te.get_text()
 	var key = "int_text"
@@ -240,14 +240,14 @@ func _on_international_text_changed(te, l):
 		selected_node.property_list_changed_notify()
 
 func _on_le_changed(text, le):
-	var i = le.find_parent("ActionWindow").get_index()
+	var i = get_aw_parent(le).get_index()
 	var dict = as_property[i]
 	var key = le.associated_key
 	
 	set_text(dict, text, key)
 
 func _on_le_in_choice_changed(text, le):
-	var i = le.find_parent("ActionWindow").get_index()
+	var i = get_aw_parent(le).get_index()
 	var dict = as_property[i]
 	var ci = le.find_parent("Choice").get_index_from_dict()
 	var key = le.associated_key
@@ -275,6 +275,9 @@ func add_action_window(i, d=0):
 	resize_textedit(window)
 	
 	action_list.move_child(window, i)
+
+func get_aw_parent(nd):
+	return nd.find_parent("MarginContainer").get_parent()
 
 func get_standard_textedit_height():
 	# TEXTEDIT'S MIN HEIGHT SHOULD BE 3 TIMES THE FONT SIZE
