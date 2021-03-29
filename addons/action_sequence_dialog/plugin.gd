@@ -157,8 +157,7 @@ func _on_acbtn_pressed(btn, fil):
 	choice.set_index(new_index)
 	
 	#		MOVE CHOICE ABOVE BUTTON
-	var target_i = btn.get_index() - 1
-	parent.move_child(choice, target_i)
+	parent.move_child(choice, btn.get_index())
 
 func _on_action_window_close_pressed(w):
 	# INPUT: ACTION WINDOW
@@ -185,7 +184,7 @@ func _on_choice_close_pressed(c):
 	# GET CHOICE INDEX
 	#	INDEX OF CHOICE DICT FROM ARRAY OF CHOICES
 	var cid = c.get_index_from_dict()
-	#	INDEX OF CHILD CHOICE FROM CHOICES WINDOW
+	#	INDEX OF CHILDNODE CHOICE FROM CHOICES WINDOW
 	var ciw = c.get_index()
 	
 	# REMOVE FROM CHOICE WINDOW
@@ -207,7 +206,7 @@ func _on_choice_close_pressed(c):
 	
 	# FINALLY, RESETTING INDEXES FOR SUBSEQUENT CHOICES
 	#	FIND DIFFERENCE BETWEEN INDEXES
-	var diff = ciw - wi
+	var diff = ciw - cid
 	for i in range(ciw, parent.get_child_count()):
 		if parent.get_child(i) is SubChoice:
 			parent.get_child(i).set_index(i - diff)
