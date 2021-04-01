@@ -249,7 +249,7 @@ func _on_le_changed(text, le):
 func _on_le_in_choice_changed(text, le):
 	var i = get_aw_parent(le).get_index()
 	var dict = as_property[i]
-	var ci = le.find_parent("Choice").get_index_from_dict()
+	var ci = get_subchoice_parent(le).get_index_from_dict()
 	var key = le.associated_key
 	
 	set_text(dict["choices"][ci], text, key)
@@ -278,6 +278,9 @@ func add_action_window(i, d=0):
 
 func get_aw_parent(nd):
 	return nd.find_parent("MarginContainer").get_parent()
+
+func get_subchoice_parent(nd):
+	return nd.get_parent().get_parent()
 
 func get_standard_textedit_height():
 	# TEXTEDIT'S MIN HEIGHT SHOULD BE 3 TIMES THE FONT SIZE

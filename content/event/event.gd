@@ -22,6 +22,7 @@ var raycast
 export (Resource) var incoming
 signal incoming_gone
 export (Array, Dictionary) var action_sequences
+var jump_targets = {}
 
 func _notification(what):
 	match what:
@@ -46,6 +47,11 @@ func _ready():
 		
 		if raycast_directions.has(Vector2(0,1)):
 			turn(Vector2(0,1))
+			
+		for i in action_sequences.size():
+			var d = action_sequences[i]
+			if d["type"] == "Label" and d.has("name"):
+				jump_targets[d["name"]] = i
 
 func disconnect_children_sprites():
 	if children_sprites:

@@ -205,6 +205,24 @@ Vector2( 1, 0 ): NodePath("RayRight")
 action_sequences = [ {
 "action_type": "Text",
 "default_text": "Hi, do you like apples ot oranges?"
+}, {
+"action_type": "Choices",
+"choices": [ {
+"jump_target": "2",
+"text": "Apples"
+}, {
+
+} ]
+}, {
+"action_type": "Text",
+"default_text": "I like apples too - they're sweet and crunchy!"
+}, {
+"action_type": "End"
+}, {
+"action_type": "Label"
+}, {
+"action_type": "Text",
+"default_text": "I loves oranges too - they're sweet and juicy!"
 } ]
 
 [node name="Sprite" parent="Grid/Bob" index="1"]
