@@ -211,7 +211,8 @@ action_sequences = [ {
 "jump_target": "2",
 "text": "Apples"
 }, {
-
+"jump_target": "Oranges",
+"text": "Oranges"
 } ]
 }, {
 "action_type": "Text",
@@ -219,7 +220,8 @@ action_sequences = [ {
 }, {
 "action_type": "End"
 }, {
-"action_type": "Label"
+"action_type": "Label",
+"name": "Oranges"
 }, {
 "action_type": "Text",
 "default_text": "I loves oranges too - they're sweet and juicy!"
