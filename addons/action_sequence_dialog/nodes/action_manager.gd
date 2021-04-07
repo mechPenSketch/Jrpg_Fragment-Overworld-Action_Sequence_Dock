@@ -61,6 +61,16 @@ func perform_action():
 	match ad["action_type"]:
 		"Text":
 			set_dialog(ad["default_text"])
+		"Choices":
+			pass
+		"Jump":
+			var target = ad["target"]
+			var target_line
+			target_line = int(target)
+			action_index = target_line
+			perform_action()
+		"Label":
+			_onto_next_action()
 		_:
 			# END
 			end_action()
