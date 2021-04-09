@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://content/map/base_tile.png" type="Texture" id=1]
 [ext_resource path="res://addons/action_sequence_dialog/nodes/action_manager.gd" type="Script" id=2]
@@ -9,7 +9,7 @@
 [ext_resource path="res://content/event/sprites/characters/alice.png" type="Texture" id=7]
 [ext_resource path="res://content/event/Actor.tscn" type="PackedScene" id=8]
 [ext_resource path="res://content/event/sprites/characters/bob.png" type="Texture" id=9]
-[ext_resource path="res://addons/action_sequence_dialog/fonts/noto_sans_ui/NotoSansUI-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://content/gui/StandardFont.tres" type="DynamicFont" id=10]
 [ext_resource path="res://content/event/controller.gd" type="Script" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -90,6 +90,62 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 3/z_index = 0
 
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.8, 0.8, 0.8, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0.4, 0.4, 0.4, 1 )
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color( 0, 0, 0, 1 )
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+
+[sub_resource type="Theme" id=8]
+default_font = ExtResource( 10 )
+Button/colors/font_color = Color( 0, 0, 0, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 2
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = null
+Button/styles/hover = SubResource( 9 )
+Button/styles/normal = SubResource( 10 )
+Button/styles/pressed = SubResource( 11 )
+
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 3
@@ -102,12 +158,8 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="DynamicFont" id=5]
-size = 24
-font_data = ExtResource( 10 )
-
 [sub_resource type="Theme" id=6]
-default_font = SubResource( 5 )
+default_font = ExtResource( 10 )
 PanelContainer/styles/panel = SubResource( 4 )
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
 RichTextLabel/colors/font_color_selected = Color( 0.49, 0.49, 0.49, 1 )
@@ -245,40 +297,60 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DialogContainer" type="PanelContainer" parent="GUI"]
-visible = false
-anchor_top = 1.0
+[node name="VBoxContainer" type="VBoxContainer" parent="GUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -86.0
+alignment = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Choices" type="VBoxContainer" parent="GUI/VBoxContainer"]
+margin_left = 920.0
+margin_top = 481.0
+margin_right = 1024.0
+margin_bottom = 521.0
+size_flags_horizontal = 8
+
+[node name="Button" type="Button" parent="GUI/VBoxContainer/Choices"]
+margin_right = 104.0
+margin_bottom = 40.0
+theme = SubResource( 8 )
+text = "Choice A"
+align = 2
+
+[node name="DialogContainer" type="PanelContainer" parent="GUI/VBoxContainer"]
+margin_top = 525.0
+margin_right = 1024.0
+margin_bottom = 576.0
 theme = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="GUI/DialogContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="GUI/VBoxContainer/DialogContainer"]
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 1021.0
-margin_bottom = 83.0
+margin_bottom = 48.0
 custom_constants/margin_right = 8
 custom_constants/margin_top = 5
 custom_constants/margin_left = 8
 custom_constants/margin_bottom = 5
 
-[node name="Text" type="RichTextLabel" parent="GUI/DialogContainer/MarginContainer"]
+[node name="Text" type="RichTextLabel" parent="GUI/VBoxContainer/DialogContainer/MarginContainer"]
 margin_left = 8.0
 margin_top = 5.0
 margin_right = 1010.0
-margin_bottom = 75.0
+margin_bottom = 40.0
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 6 )
 [connection signal="action" from="Controller" to="Grid/Player" method="_action"]
-[connection signal="action" from="Controller" to="GUI/DialogContainer/MarginContainer/Text" method="_action"]
+[connection signal="action" from="Controller" to="GUI/VBoxContainer/DialogContainer/MarginContainer/Text" method="_action"]
 [connection signal="sig_dir" from="Controller" to="Grid/Player" method="_direction"]
-[connection signal="visibility_changed" from="GUI/DialogContainer" to="GUI/DialogContainer/MarginContainer/Text" method="_on_dialog_visibility_changed"]
-[connection signal="finish" from="GUI/DialogContainer/MarginContainer/Text" to="Action" method="_onto_next_action"]
+[connection signal="visibility_changed" from="GUI/VBoxContainer/DialogContainer" to="GUI/VBoxContainer/DialogContainer/MarginContainer/Text" method="_on_dialog_visibility_changed"]
+[connection signal="finish" from="GUI/VBoxContainer/DialogContainer/MarginContainer/Text" to="Action" method="_onto_next_action"]
 
 [editable path="Grid/Player"]
 

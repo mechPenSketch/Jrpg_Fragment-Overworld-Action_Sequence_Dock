@@ -65,8 +65,14 @@ func perform_action():
 			pass
 		"Jump":
 			var target = ad["target"]
+			
 			var target_line
-			target_line = int(target)
+			var event_jt = current_event.jump_targets
+			if event_jt.has(target):
+				target_line = event_jt[target]
+			else:
+				target_line = int(target)
+			
 			action_index = target_line
 			perform_action()
 		"Label":
