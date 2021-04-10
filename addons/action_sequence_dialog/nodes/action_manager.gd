@@ -3,7 +3,7 @@ extends Node
 class_name ActionManager
 
 var state = 0
-enum {NORM, DIALOG}
+enum {NORM, DIALOG, CHOICES}
 
 var current_event
 var current_event_as
@@ -13,9 +13,17 @@ export(NodePath) var np_dialog
 var dialog
 var dialog_text
 
+export(String, FILE, "*.tscn") var fp_choice_item
+var choice_item
+export(NodePath) var np_choices_container
+var choices_container
+
 func _ready():
 	dialog = get_node(np_dialog)
 	dialog_text = dialog.find_node("Text")
+	
+	choice_item = load(fp_choice_item)
+	choices_container = get_node(np_choices_container)
 	
 func _onto_next_action():
 	if action_index < current_event_as.size() - 1:
@@ -25,11 +33,14 @@ func _onto_next_action():
 		end_action()
 
 func activate_state():
-	leave_pause_to_state()
+	# PAUSING GAME DEPENDING ON STATES
+	get_tree().paused = state in [DIALOG, CHOICES]
 	
 	match state:
 		DIALOG:
 			dialog.show()
+		CHOICES:
+			choices_container.get_child(0).grab_focus()
 
 func change_state(new_state):
 	if state != new_state:
@@ -52,9 +63,6 @@ func initiate_action_sequence(e, i):
 	
 	perform_action()
 
-func leave_pause_to_state():
-	get_tree().paused = state in [DIALOG]
-
 func perform_action():
 	# GET ACTION: DICTIONARY
 	var ad = current_event_as[action_index]
@@ -62,7 +70,15 @@ func perform_action():
 		"Text":
 			set_dialog(ad["default_text"])
 		"Choices":
-			pass
+			
+			for i in ad["choices"].size():
+				var choice_dict = ad["choices"][i]
+				var new_choice = choice_item.instance()
+				new_choice.set_text(choice_dict["text"])
+				choices_container.add_child(new_choice)
+					
+			change_state(CHOICES)
+				
 		"Jump":
 			var target = ad["target"]
 			

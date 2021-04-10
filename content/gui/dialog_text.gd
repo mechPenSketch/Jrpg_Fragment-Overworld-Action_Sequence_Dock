@@ -16,7 +16,7 @@ func _action():
 			emit_signal("finish")
 
 func _on_dialog_visibility_changed():
-	if get_parent().is_visible():
+	if get_parent().get_parent().is_visible():
 		change_state(PROGRESS)
 	else:
 		change_state(HIDE)

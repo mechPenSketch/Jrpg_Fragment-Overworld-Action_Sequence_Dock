@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://content/map/base_tile.png" type="Texture" id=1]
 [ext_resource path="res://addons/action_sequence_dialog/nodes/action_manager.gd" type="Script" id=2]
@@ -90,62 +90,6 @@ points = PoolVector2Array( 32, 32, 0, 32, 0, 0, 32, 0 )
 } ]
 3/z_index = 0
 
-[sub_resource type="StyleBoxFlat" id=9]
-bg_color = Color( 0.8, 0.8, 0.8, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-
-[sub_resource type="StyleBoxFlat" id=10]
-bg_color = Color( 1, 1, 1, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-
-[sub_resource type="StyleBoxFlat" id=11]
-bg_color = Color( 0.4, 0.4, 0.4, 1 )
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color( 0, 0, 0, 1 )
-corner_radius_top_left = 8
-corner_radius_top_right = 8
-corner_radius_bottom_right = 8
-corner_radius_bottom_left = 8
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-
-[sub_resource type="Theme" id=8]
-default_font = ExtResource( 10 )
-Button/colors/font_color = Color( 0, 0, 0, 1 )
-Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
-Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
-Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
-Button/constants/hseparation = 2
-Button/fonts/font = null
-Button/styles/disabled = null
-Button/styles/focus = null
-Button/styles/hover = SubResource( 9 )
-Button/styles/normal = SubResource( 10 )
-Button/styles/pressed = SubResource( 11 )
-
 [sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 1, 1, 1, 1 )
 border_width_left = 3
@@ -158,7 +102,7 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="Theme" id=6]
+[sub_resource type="Theme" id=5]
 default_font = ExtResource( 10 )
 PanelContainer/styles/panel = SubResource( 4 )
 RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
@@ -184,7 +128,9 @@ RichTextLabel/styles/normal = null
 [node name="Action" type="Node" parent="."]
 pause_mode = 2
 script = ExtResource( 2 )
-np_dialog = NodePath("../../Game/GUI/DialogContainer")
+np_dialog = NodePath("../GUI/VBoxContainer/DialogContainer")
+fp_choice_item = "res://content/gui/ChoiceButton.tscn"
+np_choices_container = NodePath("../GUI/VBoxContainer/Choices")
 
 [node name="Controller" type="Node" parent="."]
 pause_mode = 2
@@ -214,10 +160,6 @@ Vector2( 1, 0 ): NodePath("RayRight")
 
 [node name="Sprite" parent="Grid/Player" index="1"]
 texture = ExtResource( 7 )
-vframes_per_side = 1
-side = 0
-action_frame = 0
-action_frame_coord = Vector2( 0, 0 )
 
 [node name="Tween" parent="Grid/Player" index="2"]
 np_anim_player = NodePath("../../../../Game/Grid/Player/Sprite/AnimationPlayer")
@@ -239,10 +181,6 @@ action_sequences = [ {
 
 [node name="Sprite" parent="Grid/Signpost" index="1"]
 texture = ExtResource( 3 )
-vframes_per_side = 1
-side = 0
-action_frame = 0
-action_frame_coord = Vector2( 0, 0 )
 
 [node name="Bob" parent="Grid" instance=ExtResource( 8 )]
 position = Vector2( 336, 304 )
@@ -256,7 +194,7 @@ Vector2( 1, 0 ): NodePath("RayRight")
 }
 action_sequences = [ {
 "action_type": "Text",
-"default_text": "Hi, do you like apples ot oranges?"
+"default_text": "Hi, do you like apples or oranges?"
 }, {
 "action_type": "Choices",
 "choices": [ {
@@ -281,10 +219,6 @@ action_sequences = [ {
 
 [node name="Sprite" parent="Grid/Bob" index="1"]
 texture = ExtResource( 9 )
-vframes_per_side = 1
-side = 0
-action_frame = 0
-action_frame_coord = Vector2( 0, 0 )
 
 [node name="Tween" parent="Grid/Bob" index="2"]
 np_anim_player = NodePath("../../../../Game/Grid/Bob/Sprite/AnimationPlayer")
@@ -306,24 +240,18 @@ __meta__ = {
 }
 
 [node name="Choices" type="VBoxContainer" parent="GUI/VBoxContainer"]
-margin_left = 920.0
-margin_top = 481.0
+margin_left = 1024.0
+margin_top = 576.0
 margin_right = 1024.0
-margin_bottom = 521.0
+margin_bottom = 576.0
 size_flags_horizontal = 8
 
-[node name="Button" type="Button" parent="GUI/VBoxContainer/Choices"]
-margin_right = 104.0
-margin_bottom = 40.0
-theme = SubResource( 8 )
-text = "Choice A"
-align = 2
-
 [node name="DialogContainer" type="PanelContainer" parent="GUI/VBoxContainer"]
+visible = false
 margin_top = 525.0
 margin_right = 1024.0
 margin_bottom = 576.0
-theme = SubResource( 6 )
+theme = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

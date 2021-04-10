@@ -39,7 +39,7 @@ func _ready():
 		# WHEN CHILDREN SPRITES' TEXTURES ARE SET
 		prepare_for_when_children_sprites_are_set()
 	else:
-		base = get_node("/root/Base")
+		base = get_node("/root/Game")
 		
 		grid = get_parent()
 	
@@ -50,7 +50,7 @@ func _ready():
 			
 		for i in action_sequences.size():
 			var d = action_sequences[i]
-			if d["type"] == "Label" and d.has("name"):
+			if d["action_type"] == "Label" and d.has("name"):
 				jump_targets[d["name"]] = i
 
 func disconnect_children_sprites():
