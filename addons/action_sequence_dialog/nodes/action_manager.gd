@@ -27,10 +27,20 @@ func _ready():
 	
 func _onto_next_action():
 	if action_index < current_event_as.size() - 1:
-		action_index += 1
-		perform_action()
+		jump_to_action(action_index + 1)
 	else:
 		end_action()
+
+func _on_choice_pressed(i):
+	var jump_target = current_event_as[action_index]["choices"][i]["jump_target"]
+	var target_line
+	
+	if current_event.jump_targets.has(jump_target):
+		target_line = current_event.jump_targets[jump_target]
+	else:
+		target_line = int(jump_target)
+		
+	jump_to_action(target_line)
 
 func activate_state():
 	# PAUSING GAME DEPENDING ON STATES
@@ -41,6 +51,8 @@ func activate_state():
 			dialog.show()
 		CHOICES:
 			choices_container.get_child(0).grab_focus()
+			for i in choices_container.get_child_count():
+				choices_container.get_child(i).connect("pressed", self, "_on_choice_pressed", [i])
 
 func change_state(new_state):
 	if state != new_state:
@@ -52,6 +64,10 @@ func deactivate_state():
 	match state:
 		DIALOG:
 			dialog.hide()
+		CHOICES:
+			for c in choices_container.get_children():
+				choices_container.remove_child(c)
+				c.queue_free()
 
 func end_action():
 	change_state(NORM)
@@ -63,12 +79,17 @@ func initiate_action_sequence(e, i):
 	
 	perform_action()
 
+func jump_to_action(tl):
+	action_index = tl
+	perform_action()
+
 func perform_action():
 	# GET ACTION: DICTIONARY
 	var ad = current_event_as[action_index]
 	match ad["action_type"]:
 		"Text":
 			set_dialog(ad["default_text"])
+			
 		"Choices":
 			
 			for i in ad["choices"].size():
@@ -78,7 +99,7 @@ func perform_action():
 				choices_container.add_child(new_choice)
 					
 			change_state(CHOICES)
-				
+		
 		"Jump":
 			var target = ad["target"]
 			
@@ -89,10 +110,11 @@ func perform_action():
 			else:
 				target_line = int(target)
 			
-			action_index = target_line
-			perform_action()
+			jump_to_action(target_line)
+		
 		"Label":
 			_onto_next_action()
+			
 		_:
 			# END
 			end_action()
