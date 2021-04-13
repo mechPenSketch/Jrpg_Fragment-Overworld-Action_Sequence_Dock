@@ -9,6 +9,8 @@ var current_event
 var current_event_as
 var action_index
 
+var frame_debuffer
+
 export(NodePath) var np_dialog
 var dialog
 var dialog_text
@@ -24,7 +26,7 @@ func _ready():
 	
 	choice_item = load(fp_choice_item)
 	choices_container = get_node(np_choices_container)
-	
+
 func _onto_next_action():
 	if action_index < current_event_as.size() - 1:
 		jump_to_action(action_index + 1)
@@ -42,6 +44,15 @@ func _on_choice_pressed(i):
 		
 	jump_to_action(target_line)
 
+func _process(_d):
+	if frame_debuffer:
+		frame_debuffer = false
+		
+		if state == CHOICES:
+			choices_container.get_child(0).grab_focus()
+			for i in choices_container.get_child_count():
+				choices_container.get_child(i).connect("pressed", self, "_on_choice_pressed", [i])
+
 func activate_state():
 	# PAUSING GAME DEPENDING ON STATES
 	get_tree().paused = state in [DIALOG, CHOICES]
@@ -50,9 +61,7 @@ func activate_state():
 		DIALOG:
 			dialog.show()
 		CHOICES:
-			choices_container.get_child(0).grab_focus()
-			for i in choices_container.get_child_count():
-				choices_container.get_child(i).connect("pressed", self, "_on_choice_pressed", [i])
+			frame_debuffer = true
 
 func change_state(new_state):
 	if state != new_state:
