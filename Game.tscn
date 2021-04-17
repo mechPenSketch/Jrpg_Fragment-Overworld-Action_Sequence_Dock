@@ -267,7 +267,7 @@ size_flags_horizontal = 8
 
 [node name="DialogContainer" type="PanelContainer" parent="GUI/VBoxContainer"]
 visible = false
-margin_top = 525.0
+margin_top = 489.0
 margin_right = 1024.0
 margin_bottom = 576.0
 theme = SubResource( 5 )
@@ -279,17 +279,25 @@ __meta__ = {
 margin_left = 3.0
 margin_top = 3.0
 margin_right = 1021.0
-margin_bottom = 48.0
+margin_bottom = 84.0
 custom_constants/margin_right = 8
 custom_constants/margin_top = 5
 custom_constants/margin_left = 8
 custom_constants/margin_bottom = 5
 
+[node name="LineHeight" type="Label" parent="GUI/VBoxContainer/DialogContainer/MarginContainer"]
+margin_left = 8.0
+margin_top = 5.0
+margin_right = 1010.0
+margin_bottom = 76.0
+text = "
+"
+
 [node name="Text" type="RichTextLabel" parent="GUI/VBoxContainer/DialogContainer/MarginContainer"]
 margin_left = 8.0
 margin_top = 5.0
 margin_right = 1010.0
-margin_bottom = 40.0
+margin_bottom = 76.0
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 6 )

@@ -9,8 +9,6 @@ var current_event
 var current_event_as
 var action_index
 
-var frame_debuffer
-
 export(NodePath) var np_dialog
 var dialog
 var dialog_text
@@ -45,13 +43,13 @@ func _on_choice_pressed(i):
 	jump_to_action(target_line)
 
 func _process(_d):
-	if frame_debuffer:
-		frame_debuffer = false
-		
-		if state == CHOICES:
+	match state:
+		CHOICES:
 			choices_container.get_child(0).grab_focus()
 			for i in choices_container.get_child_count():
 				choices_container.get_child(i).connect("pressed", self, "_on_choice_pressed", [i])
+			
+	set_process(false)
 
 func activate_state():
 	# PAUSING GAME DEPENDING ON STATES
@@ -60,8 +58,9 @@ func activate_state():
 	match state:
 		DIALOG:
 			dialog.show()
-		CHOICES:
-			frame_debuffer = true
+	
+	if state in [CHOICES]:
+		set_process(true)
 
 func change_state(new_state):
 	if state != new_state:
