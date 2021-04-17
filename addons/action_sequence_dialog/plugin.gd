@@ -106,9 +106,6 @@ func _on_selection_changed():
 	
 func _on_settings_changed():
 	main_font_size = editor_settings.get_setting("interface/editor/main_font_size")
-	
-	for n in action_list.get_children():
-		resize_textedit(n)
 
 func _on_aabtn_pressed(n:String):
 	# ADD AN ACTION FROM THE DOCK
@@ -272,7 +269,6 @@ func add_action_window(i, d=0):
 	
 	# CONNECTING SIGNALS AND SETTING SUB-CONTENT
 	window.mass_connect(self, action)
-	resize_textedit(window)
 	
 	action_list.move_child(window, i)
 
@@ -288,11 +284,6 @@ func get_standard_textedit_height():
 	#	3pt = 4px
 	#	1 LINE HEIGHT = x1.5 THE FONT SOZE
 	return main_font_size * 6
-
-func resize_textedit(n):
-	var t = n.find_node("TextEdit")
-	if t:
-		t.rect_min_size.y = get_standard_textedit_height()
 	
 func set_text(dict, text, key):
 	if text == "":

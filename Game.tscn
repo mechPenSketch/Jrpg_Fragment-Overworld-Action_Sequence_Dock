@@ -229,7 +229,7 @@ action_sequences = [ {
 "name": "Oranges"
 }, {
 "action_type": "Text",
-"default_text": "I loves oranges too - they're sweet and juicy!"
+"default_text": "I love oranges too - they're soooo juicy!"
 } ]
 
 [node name="Sprite" parent="Grid/Bob" index="1"]
@@ -301,8 +301,8 @@ margin_bottom = 76.0
 fit_content_height = true
 scroll_active = false
 script = ExtResource( 6 )
-[connection signal="action" from="Controller" to="GUI/VBoxContainer/DialogContainer/MarginContainer/Text" method="_action"]
 [connection signal="action" from="Controller" to="Grid/Player" method="_action"]
+[connection signal="action" from="Controller" to="GUI/VBoxContainer/DialogContainer/MarginContainer/Text" method="_action"]
 [connection signal="sig_dir" from="Controller" to="Grid/Player" method="_direction"]
 [connection signal="visibility_changed" from="GUI/VBoxContainer/DialogContainer" to="GUI/VBoxContainer/DialogContainer/MarginContainer/Text" method="_on_dialog_visibility_changed"]
 [connection signal="finish" from="GUI/VBoxContainer/DialogContainer/MarginContainer/Text" to="Action" method="_onto_next_action"]

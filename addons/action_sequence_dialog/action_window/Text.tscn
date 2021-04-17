@@ -50,14 +50,27 @@ size_flags_vertical = 1
 text = "Default"
 align = 2
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer" index="2"]
+[node name="LineHeight" type="Label" parent="MarginContainer/VBoxContainer" index="2"]
 margin_top = 54.0
 margin_right = 1014.0
-margin_bottom = 54.0
+margin_bottom = 102.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "
+
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/LineHeight" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
 size_flags_vertical = 0
 wrap_enabled = true
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/TextEdit" method="_on_connecting_editor_plugin"]
+[connection signal="connect_to_editor" from="." to="MarginContainer/VBoxContainer/LineHeight/TextEdit" method="_on_connecting_editor_plugin"]
