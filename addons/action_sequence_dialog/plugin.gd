@@ -218,24 +218,6 @@ func _on_defualt_text_changed(te):
 	
 	set_text(dict, text, key)
 
-func _on_international_text_changed(te, l):
-	var i = get_aw_parent(te).get_index()
-	var dict = as_property[i]
-	var text = te.get_text()
-	var key = "int_text"
-	var key_lang = l
-	
-	if text == "":
-		if dict.has(key):
-			if dict[key].has(key_lang):
-				dict[key].erase(key_lang)
-				if dict[key].empty():
-					dict.erase[key]
-				selected_node.property_list_changed_notify()
-	else:
-		dict[key][key_lang] = text
-		selected_node.property_list_changed_notify()
-
 func _on_le_changed(text, le):
 	var i = get_aw_parent(le).get_index()
 	var dict = as_property[i]
