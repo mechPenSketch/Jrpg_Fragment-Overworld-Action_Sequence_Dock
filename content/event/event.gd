@@ -67,7 +67,11 @@ func prepare_for_when_children_sprites_are_set():
 
 func _draw():
 	if !is_drawable_sprite_then_children(self):
-		var rect_size = Vector2(cell_width, cell_height)
+		var rect_size
+		if parent_tilemap:
+			rect_size = parent_tilemap.get_cell_size
+		else:
+			rect_size = Vector2(32, 32)
 		var rect_topleft = get_topleft_corner()
 		var rect = Rect2(rect_topleft, rect_size)
 		
@@ -88,9 +92,8 @@ func _direction(dir:Vector2):
 		
 		turn(dir)
 		if !raycast.is_colliding():
-			grid_x += dir.x
-			grid_y += dir.y
-			target_pos = get_position() + dir * Vector2(cell_width, cell_height)
+			grid_position += dir
+			target_pos = get_position() + dir * parent_tilemap.get_cell_size()
 			
 			# ADD INCOMING BLOCK
 			var new_incoming = incoming.instance()
@@ -129,7 +132,10 @@ func get_children_sprites(node):
 	return array
 
 func get_topleft_corner():
-	return Vector2(cell_width, cell_height) * -0.5
+	if parent_tilemap:
+		return parent_tilemap.get_cell_size() * -0.5
+	else:
+		return Vector2(-16, -16)
 
 func is_drawable_sprite(node):
 	return node is Sprite and node.texture != null
