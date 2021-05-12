@@ -8,8 +8,6 @@ var base
 var default_texture
 var children_sprites
 
-var grid
-
 signal turning
 var is_moving = false
 export (NodePath) var np_tween
@@ -41,7 +39,7 @@ func _ready():
 	else:
 		base = get_node("/root/Game")
 		
-		grid = get_parent()
+		set_parent_tilemap(get_parent())
 	
 		if np_tween: tween = get_node(np_tween)
 		
@@ -98,7 +96,7 @@ func _direction(dir:Vector2):
 			# ADD INCOMING BLOCK
 			var new_incoming = incoming.instance()
 			new_incoming.set_position(target_pos)
-			grid.add_child(new_incoming)
+			parent_tilemap.add_child(new_incoming)
 			connect("incoming_gone", new_incoming, "queue_free")
 			
 			tween.move_char(self, target_pos)

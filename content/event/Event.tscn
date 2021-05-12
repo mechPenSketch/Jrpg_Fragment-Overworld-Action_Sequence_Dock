@@ -4,17 +4,13 @@
 [ext_resource path="res://addons/snap_map/nodes/colshape_piece.gd" type="Script" id=2]
 [ext_resource path="res://addons/snap_map/nodes/colshape.tres" type="Shape2D" id=3]
 
-
 [node name="Event" type="Area2D"]
 position = Vector2( 16, 16 )
 script = ExtResource( 1 )
 __meta__ = {
 "as_property": "action_sequences"
 }
-cell_width = 32
-cell_height = 32
 raycast_directions = {
-
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -23,6 +19,3 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-cell_width = 32
-aspect_ratio = 1
-cell_height = 32
