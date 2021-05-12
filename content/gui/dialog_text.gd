@@ -21,7 +21,7 @@ func _on_dialog_visibility_changed():
 	else:
 		change_state(HIDE)
 
-func _process(delta):
+func _process(_d):
 	visible_characters += dvis
 	
 	if visible_characters >= get_total_character_count():
