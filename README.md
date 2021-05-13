@@ -1,8 +1,10 @@
-# Jrpg Fragment - Overworld
+# Jrpg Fragment - Overworld (Action Sequence Dock)
 Overworld map for a JRPG
 
 ## About
 This asset contains an example of a typical overworld aspect of a JRPG.
+
+This version uses Action Sequence Dock.
 
 ## Author
 * mechPenSketch
