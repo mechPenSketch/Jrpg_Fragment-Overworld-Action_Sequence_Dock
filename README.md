@@ -4,7 +4,7 @@ Overworld map for a JRPG
 ## About
 This asset contains an example of a typical overworld aspect of a JRPG.
 
-This version uses Action Sequence Dock.
+This version uses Action Sequence Dock. With it, you can view and edit the dialog from a dock, while also seeing the event in the viewport as a reference to understand the context better.
 
 ## Author
 * mechPenSketch
